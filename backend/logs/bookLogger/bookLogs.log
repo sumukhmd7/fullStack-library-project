@@ -1,0 +1,358 @@
+level error: Mar-08-2026 00:44:01 	Error: Cannot read properties of undefined (reading 'filename')
+level error: Mar-08-2026 01:13:46 	Error: Cannot read properties of undefined (reading 'filename')
+level error: Mar-08-2026 01:14:02 	Error: Cannot read properties of undefined (reading 'filename')
+level info: Mar-08-2026 09:29:14 	Book added successfully
+level error: Jul-07-2026 17:34:42 	Error: Cannot read properties of undefined (reading 'filename')
+level error: Jul-07-2026 17:38:57 	Error: Cannot read properties of undefined (reading 'filename')
+level info: Jul-07-2026 17:46:24 	Book added successfully
+level error: Jul-07-2026 17:46:44 	Error: Failed query: select "rating" from "reviews" where  = $1
+params: 82923154-77fa-43b8-ba78-24cf78d90685
+level error: Jul-07-2026 17:46:47 	Error: Failed query: select "rating" from "reviews" where  = $1
+params: 82923154-77fa-43b8-ba78-24cf78d90685
+level error: Jul-07-2026 17:46:49 	Error: Failed query: select "rating" from "reviews" where  = $1
+params: c7da88b8-5848-42c8-9cfd-00383ccb8257
+level error: Jul-07-2026 18:05:51 	Error: Failed query: select "rating" from "reviews" where  = $1
+params: 82923154-77fa-43b8-ba78-24cf78d90685
+level error: Jul-09-2026 10:02:48 	Error: Failed query: select "rating" from "reviews" where  = $1
+params: c7da88b8-5848-42c8-9cfd-00383ccb8257
+level error: Jul-09-2026 10:05:29 	Error: Failed query: select "rating" from "reviews" where  = $1
+params: c7da88b8-5848-42c8-9cfd-00383ccb8257
+level error: Jul-09-2026 10:08:04 	Error: Failed query: select "rating" from "reviews" where  = $1
+params: 82923154-77fa-43b8-ba78-24cf78d90685
+level error: Jul-09-2026 13:05:36 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:20:48 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:22:32 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:29:43 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:30:46 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:31:22 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:43:03 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:47:31 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:51:43 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:52:27 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level error: Jul-09-2026 13:56:20 	Error: Failed query: select "id", "book_name", "book_description", "book_author", "book_category", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at" from "books" where "books"."id" = $1
+params: undefined
+level info: Jul-09-2026 14:04:25 	Book details found!
+level info: Jul-09-2026 14:07:58 	Book details found!
+level info: Jul-09-2026 14:08:02 	Book details found!
+level info: Jul-09-2026 14:08:06 	Book details found!
+level info: Jul-09-2026 14:08:08 	Book details found!
+level info: Jul-09-2026 14:18:51 	Book details found!
+level info: Jul-09-2026 14:23:11 	Book details found!
+level info: Jul-09-2026 14:25:48 	Book details found!
+level info: Jul-09-2026 14:26:02 	Book details found!
+level info: Jul-09-2026 14:28:53 	Book details found!
+level info: Jul-09-2026 14:29:05 	Book updated!
+level info: Jul-09-2026 14:29:22 	Book details found!
+level info: Jul-09-2026 14:29:28 	Book updated!
+level info: Jul-09-2026 14:29:35 	Book details found!
+level info: Jul-09-2026 14:30:28 	Book updated!
+level error: Jul-09-2026 14:33:26 	Error: Cannot read properties of undefined (reading 'filename')
+level info: Jul-09-2026 14:35:19 	Book added successfully
+level info: Jul-09-2026 16:51:24 	Book details found!
+level info: Jul-09-2026 16:51:29 	Book details found!
+level info: Jul-09-2026 17:08:25 	Book deleted!
+level info: Jul-09-2026 17:12:39 	Book added successfully
+level info: Jul-09-2026 17:37:50 	Book details found!
+level info: Jul-09-2026 17:41:17 	Book details found!
+level info: Jul-09-2026 23:45:10 	Book details found!
+level info: Jul-09-2026 23:51:34 	Book details found!
+level info: Jul-09-2026 23:51:39 	Book deleted!
+level info: Jul-10-2026 15:38:55 	Book added successfully
+level info: Jul-10-2026 15:42:35 	Book details found!
+level info: Jul-10-2026 15:43:58 	Book details found!
+level info: Jul-10-2026 15:47:47 	Book details found!
+level info: Jul-10-2026 15:54:32 	Book details found!
+level info: Jul-10-2026 15:57:02 	Book updated!
+level info: Jul-10-2026 15:57:06 	Book details found!
+level info: Jul-10-2026 15:57:09 	Book updated!
+level info: Jul-10-2026 15:57:14 	Book details found!
+level info: Jul-10-2026 15:57:17 	Book updated!
+level info: Jul-10-2026 15:58:56 	Book details found!
+level info: Jul-10-2026 15:59:00 	Book updated!
+level info: Jul-10-2026 15:59:05 	Book details found!
+level info: Jul-10-2026 16:19:29 	Book details found!
+level info: Jul-10-2026 16:19:31 	Book updated!
+level info: Jul-10-2026 16:19:35 	Book details found!
+level info: Jul-10-2026 16:19:40 	Book updated!
+level info: Jul-10-2026 18:26:21 	Book details found!
+level info: Jul-10-2026 18:26:25 	Book updated!
+level info: Jul-10-2026 18:26:41 	Book details found!
+level info: Jul-10-2026 18:26:43 	Book updated!
+level info: Jul-10-2026 18:26:55 	Book details found!
+level info: Jul-10-2026 18:26:59 	Book updated!
+level info: Jul-10-2026 18:27:05 	Book details found!
+level info: Jul-10-2026 18:27:07 	Book updated!
+level info: Jul-10-2026 20:41:59 	Book added successfully
+level info: Jul-10-2026 20:45:28 	Book details found!
+level info: Jul-10-2026 20:45:32 	Book updated!
+level info: Jul-11-2026 10:07:32 	Book details found!
+level info: Jul-11-2026 10:07:35 	Book updated!
+level info: Jul-11-2026 10:07:41 	Book details found!
+level info: Jul-11-2026 10:07:44 	Book updated!
+level info: Jul-11-2026 10:07:54 	Book details found!
+level info: Jul-11-2026 10:07:58 	Book updated!
+level info: Jul-11-2026 11:47:10 	Book details found!
+level info: Jul-11-2026 11:47:13 	Book updated!
+level info: Jul-11-2026 13:49:34 	Book details found!
+level info: Jul-11-2026 13:49:37 	Book updated!
+level info: Jul-11-2026 13:49:43 	Book details found!
+level info: Jul-11-2026 13:49:45 	Book updated!
+level info: Jul-13-2026 01:07:49 	Book added successfully
+level info: Jul-13-2026 01:08:26 	Book details found!
+level info: Jul-13-2026 01:08:33 	Book updated!
+level info: Jul-13-2026 01:08:37 	Book details found!
+level info: Jul-13-2026 01:08:41 	Book updated!
+level info: Jul-13-2026 01:10:29 	Book details found!
+level info: Jul-13-2026 01:11:23 	Book added successfully
+level info: Jul-13-2026 01:11:36 	Book details found!
+level info: Jul-13-2026 11:59:37 	Book added successfully
+level info: Jul-13-2026 12:42:35 	Book deleted!
+level info: Jul-13-2026 12:42:38 	Book deleted!
+level info: Jul-13-2026 12:42:40 	Book deleted!
+level info: Jul-13-2026 12:43:12 	Book added successfully
+level info: Jul-13-2026 12:44:32 	Book added successfully
+level info: Jul-13-2026 13:28:36 	Book added successfully
+level info: Jul-13-2026 13:28:49 	Book deleted!
+level info: Jul-13-2026 13:29:28 	Book added successfully
+level info: Jul-13-2026 14:21:57 	Book added successfully
+level info: Jul-13-2026 14:22:31 	Book added successfully
+level info: Jul-13-2026 14:22:42 	Book deleted!
+level info: Jul-13-2026 14:22:45 	Book deleted!
+level info: Jul-13-2026 14:22:48 	Book deleted!
+level info: Jul-13-2026 14:22:51 	Book deleted!
+level info: Jul-13-2026 14:22:55 	Book deleted!
+level info: Jul-13-2026 14:33:53 	Book added successfully
+level info: Jul-13-2026 14:34:16 	Book added successfully
+level info: Jul-13-2026 15:06:23 	Book added successfully
+level info: Jul-13-2026 15:06:40 	Book deleted!
+level info: Jul-13-2026 15:06:42 	Book deleted!
+level info: Jul-13-2026 15:06:45 	Book deleted!
+level error: Jul-13-2026 15:07:14 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,120.99
+level error: Jul-13-2026 15:07:53 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,119.98
+level error: Jul-13-2026 15:08:07 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,119.98
+level error: Jul-13-2026 15:10:05 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,119.98
+level error: Jul-13-2026 15:10:09 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,119.98
+level error: Jul-13-2026 15:13:14 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,119.98
+level error: Jul-13-2026 15:13:18 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,119.98
+level error: Jul-13-2026 15:13:24 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,ghgh,Héctor García and Francesc Miralles,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,119.98
+level error: Jul-13-2026 15:13:57 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,bnm,Suzanne Collins,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,249.99
+level error: Jul-13-2026 15:24:13 	Error: Failed query: insert into "books" ("id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at") values (default, $1, $2, $3, $4, $5, default, $6, default, default, default, default, default, default, default) returning "id", "book_name", "book_description", "book_author", "category_id", "book_image", "book_status", "book_cost", "book_likes", "like_by_users", "book_dislikes", "current_owner", "is_active", "created_at", "updated_at"
+params: Ikigai,bnm,Suzanne Collins,f8814aef-e193-4bf6-ad95-a703dbee053c,/uploads/booksImages/book_undefined.jpg,249.99
+level info: Jul-13-2026 15:24:50 	Book added successfully
+level info: Jul-13-2026 15:25:23 	Book details found!
+level info: Jul-13-2026 15:25:29 	Book updated!
+level info: Jul-14-2026 09:47:18 	Book deleted!
+level info: Jul-14-2026 09:47:40 	Book added successfully
+level info: Jul-14-2026 09:48:00 	Book added successfully
+level info: Jul-14-2026 09:48:20 	Book added successfully
+level info: Jul-14-2026 09:49:05 	Book added successfully
+level info: Jul-14-2026 09:49:11 	Book details found!
+level info: Jul-14-2026 09:49:15 	Book updated!
+level info: Jul-14-2026 09:49:36 	Book deleted!
+level info: Jul-14-2026 09:49:39 	Book deleted!
+level info: Jul-14-2026 09:49:41 	Book deleted!
+level info: Jul-14-2026 09:49:44 	Book deleted!
+level info: Jul-14-2026 09:53:21 	Book added successfully
+level info: Jul-14-2026 10:14:31 	Book added successfully
+level info: Jul-14-2026 10:14:52 	Book added successfully
+level info: Jul-14-2026 10:15:07 	Book deleted!
+level info: Jul-14-2026 10:15:09 	Book deleted!
+level info: Jul-14-2026 10:15:12 	Book deleted!
+level info: Jul-14-2026 11:21:07 	Book added successfully
+level info: Jul-14-2026 11:21:26 	Book added successfully
+level info: Jul-14-2026 11:23:17 	Book deleted!
+level info: Jul-14-2026 11:25:11 	Book added successfully
+level info: Jul-14-2026 11:25:22 	Book deleted!
+level info: Jul-14-2026 14:25:13 	Book added successfully
+level info: Jul-14-2026 18:58:22 	Book added successfully
+level info: Jul-14-2026 18:59:22 	Book deleted!
+level info: Jul-14-2026 19:11:44 	Book details found!
+level info: Jul-14-2026 19:11:48 	Book updated!
+level info: Jul-14-2026 22:21:46 	Book deleted!
+level info: Jul-14-2026 22:21:52 	Book deleted!
+level error: Jul-14-2026 22:46:55 	Error: categoryId is not defined
+level error: Jul-14-2026 22:47:38 	Error: categoryId is not defined
+level info: Jul-14-2026 22:53:04 	Book added successfully
+level info: Jul-14-2026 22:53:20 	Book deleted!
+level info: Jul-14-2026 22:53:54 	Book added successfully
+level info: Jul-14-2026 22:53:59 	Book details found!
+level info: Jul-14-2026 22:54:07 	Book details found!
+level info: Jul-14-2026 22:54:12 	Book updated!
+level info: Jul-14-2026 22:54:30 	Book details found!
+level info: Jul-14-2026 22:54:37 	Book details found!
+level info: Jul-14-2026 22:54:41 	Book updated!
+level info: Jul-14-2026 22:54:45 	Book details found!
+level info: Jul-14-2026 22:55:01 	Book details found!
+level info: Jul-14-2026 22:56:06 	Book details found!
+level info: Jul-14-2026 23:20:59 	Book details found!
+level info: Jul-14-2026 23:21:04 	Book updated!
+level info: Jul-14-2026 23:23:18 	Book details found!
+level info: Jul-14-2026 23:23:36 	Book details found!
+level info: Jul-14-2026 23:27:49 	Book details found!
+level info: Jul-14-2026 23:27:54 	Book updated!
+level info: Jul-14-2026 23:27:59 	Book details found!
+level info: Jul-14-2026 23:28:03 	Book updated!
+level info: Jul-15-2026 10:55:49 	Book details found!
+level info: Jul-15-2026 10:55:57 	Book details found!
+level info: Jul-15-2026 10:56:03 	Book updated!
+level info: Jul-15-2026 10:56:15 	Book details found!
+level info: Jul-15-2026 10:56:19 	Book updated!
+level info: Jul-15-2026 18:30:14 	Book details found!
+level info: Jul-16-2026 14:18:12 	Book details found!
+level info: Jul-16-2026 14:18:18 	Book updated!
+level info: Jul-16-2026 14:33:03 	Book details found!
+level info: Jul-16-2026 14:33:08 	Book updated!
+level info: Jul-16-2026 14:34:00 	Book details found!
+level info: Jul-16-2026 14:34:04 	Book updated!
+level info: Jul-16-2026 14:50:54 	Book details found!
+level info: Jul-16-2026 14:50:58 	Book updated!
+level info: Jul-16-2026 14:51:32 	Book details found!
+level info: Jul-16-2026 14:51:36 	Book updated!
+level info: Jul-16-2026 16:17:56 	Book details found!
+level info: Jul-16-2026 16:18:00 	Book updated!
+level info: Jul-16-2026 16:19:33 	Book details found!
+level info: Jul-16-2026 16:19:37 	Book updated!
+level info: Jul-16-2026 18:13:09 	Book added successfully
+level info: Jul-16-2026 18:46:31 	Book details found!
+level info: Jul-16-2026 18:46:35 	Book deleted!
+level info: Jul-16-2026 18:46:38 	Book deleted!
+level info: Jul-16-2026 18:55:16 	Book added successfully
+level info: Jul-16-2026 18:55:31 	Book added successfully
+level info: Jul-16-2026 18:55:47 	Book added successfully
+level info: Jul-16-2026 18:55:54 	Book details found!
+level info: Jul-16-2026 18:55:58 	Book updated!
+level info: Jul-17-2026 14:47:38 	Book added successfully
+level info: Jul-20-2026 14:39:00 	Book deleted!
+level info: Jul-20-2026 14:39:05 	Book deleted!
+level info: Jul-20-2026 14:56:16 	Book deleted!
+level info: Jul-20-2026 14:56:18 	Book deleted!
+level info: Jul-20-2026 15:05:37 	Book added successfully
+level info: Jul-20-2026 15:29:04 	Book added successfully
+level info: Jul-20-2026 15:30:20 	Book added successfully
+level info: Jul-20-2026 15:33:02 	Book added successfully
+level info: Jul-20-2026 15:34:17 	Book added successfully
+level info: Jul-20-2026 15:35:59 	Book added successfully
+level info: Jul-20-2026 15:37:51 	Book added successfully
+level info: Jul-20-2026 15:39:10 	Book added successfully
+level info: Jul-20-2026 15:41:18 	Book added successfully
+level info: Jul-20-2026 15:43:52 	Book added successfully
+level info: Jul-20-2026 22:59:32 	Book added successfully
+level info: Jul-20-2026 23:11:15 	Book details found!
+level info: Jul-21-2026 00:07:25 	Book added successfully
+level info: Jul-21-2026 00:08:11 	Book added successfully
+level info: Jul-21-2026 00:12:20 	Book added successfully
+level info: Jul-21-2026 00:32:16 	Book deleted!
+level info: Jul-21-2026 00:32:21 	Book details found!
+level error: Jul-21-2026 00:32:28 	No values to set
+level error: Jul-21-2026 00:32:36 	No values to set
+level info: Jul-21-2026 00:32:46 	Book details found!
+level error: Jul-21-2026 00:32:52 	No values to set
+level info: Jul-21-2026 00:33:09 	Book details found!
+level info: Jul-21-2026 00:33:15 	Book details found!
+level error: Jul-21-2026 00:33:24 	No values to set
+level error: Jul-21-2026 00:35:00 	No values to set
+level error: Jul-21-2026 00:37:29 	No values to set
+level error: Jul-21-2026 00:39:14 	No values to set
+level info: Jul-21-2026 00:53:01 	Book updated!
+level info: Jul-21-2026 00:54:09 	Book details found!
+level info: Jul-21-2026 00:54:17 	Book updated!
+level info: Jul-21-2026 00:54:23 	Book details found!
+level info: Jul-21-2026 00:54:29 	Book updated!
+level info: Jul-21-2026 00:55:06 	Book details found!
+level info: Jul-21-2026 00:55:12 	Book updated!
+level info: Jul-21-2026 00:55:16 	Book details found!
+level info: Jul-21-2026 00:55:23 	Book updated!
+level info: Jul-21-2026 00:55:58 	Book added successfully
+level info: Jul-21-2026 09:28:18 	Book deleted!
+level info: Jul-21-2026 09:28:22 	Book deleted!
+level info: Jul-21-2026 09:28:25 	Book deleted!
+level info: Jul-21-2026 09:29:13 	Book added successfully
+level info: Jul-21-2026 09:29:20 	Book details found!
+level info: Jul-21-2026 09:29:27 	Book updated!
+level info: Jul-21-2026 09:29:31 	Book deleted!
+level info: Jul-21-2026 09:39:53 	Book added successfully
+level info: Jul-21-2026 09:44:38 	Book added successfully
+level info: Jul-21-2026 10:00:56 	Book added successfully
+level info: Jul-21-2026 10:03:26 	Book added successfully
+level info: Jul-21-2026 10:05:20 	Book added successfully
+level info: Jul-21-2026 10:06:25 	Book added successfully
+level info: Jul-21-2026 10:08:04 	Book added successfully
+level info: Jul-21-2026 10:11:29 	Book added successfully
+level info: Jul-21-2026 10:13:19 	Book added successfully
+level info: Jul-21-2026 10:14:55 	Book added successfully
+level info: Jul-21-2026 10:16:12 	Book added successfully
+level info: Jul-21-2026 10:16:25 	Book deleted!
+level info: Jul-21-2026 10:17:56 	Book added successfully
+level info: Jul-21-2026 10:19:35 	Book added successfully
+level info: Jul-21-2026 10:21:47 	Book added successfully
+level info: Jul-21-2026 10:23:40 	Book added successfully
+level info: Jul-21-2026 10:25:35 	Book added successfully
+level info: Jul-21-2026 10:27:26 	Book added successfully
+level info: Jul-21-2026 10:30:34 	Book added successfully
+level info: Jul-21-2026 12:33:49 	Book added successfully
+level info: Jul-21-2026 12:34:03 	Book details found!
+level info: Jul-21-2026 12:37:46 	Book details found!
+level info: Jul-21-2026 12:41:37 	Book details found!
+level info: Jul-21-2026 12:41:43 	Book updated!
+level info: Jul-21-2026 15:25:03 	Book details found!
+level info: Jul-21-2026 15:25:06 	Book updated!
+level info: Jul-23-2026 08:35:18 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:35:26 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:35:29 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:35:30 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:35:32 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:35:35 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:35:36 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:40:05 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:40:07 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:40:09 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 48fde642-0023-4183-9dd5-2934d9968f80
+level info: Jul-23-2026 08:40:10 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book 48fde642-0023-4183-9dd5-2934d9968f80
+level info: Jul-23-2026 08:40:54 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:40:55 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 48fde642-0023-4183-9dd5-2934d9968f80
+level info: Jul-23-2026 08:40:56 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book 48fde642-0023-4183-9dd5-2934d9968f80
+level info: Jul-23-2026 08:41:16 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 92d52f58-920c-444b-a110-4277b0504fd6
+level info: Jul-23-2026 08:41:18 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 93a5d5d0-bd1f-4d2a-baa0-b5b7e15d7fb1
+level info: Jul-23-2026 08:41:21 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 4e1c1a24-d25f-4026-8a50-599bd3aa9cef
+level info: Jul-23-2026 08:41:25 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book 93a5d5d0-bd1f-4d2a-baa0-b5b7e15d7fb1
+level info: Jul-23-2026 08:41:27 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book 92d52f58-920c-444b-a110-4277b0504fd6
+level info: Jul-23-2026 08:41:28 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book 4e1c1a24-d25f-4026-8a50-599bd3aa9cef
+level info: Jul-23-2026 08:41:57 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:41:57 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:41:58 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:41:58 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:41:59 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:41:59 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:42:00 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:42:01 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:46:20 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:46:21 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:46:22 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 48fde642-0023-4183-9dd5-2934d9968f80
+level info: Jul-23-2026 08:46:23 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book 48fde642-0023-4183-9dd5-2934d9968f80
+level info: Jul-23-2026 08:46:40 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 47d69e38-4a8f-4a13-a8ee-566f1b2e914b
+level info: Jul-23-2026 08:46:44 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a2bf3e9a-9130-4986-aa3b-2fb0580c53c5
+level info: Jul-23-2026 08:46:46 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 7e4b3115-a5ed-4647-aa0f-a0c0d82251b0
+level info: Jul-23-2026 08:46:59 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book d3f3b057-c4cd-4dbd-90be-c149f91627bf
+level info: Jul-23-2026 08:47:00 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book 92d52f58-920c-444b-a110-4277b0504fd6
+level info: Jul-23-2026 14:51:00 	Book details found!
+level info: Jul-23-2026 14:51:07 	Book updated!
+level info: Jul-23-2026 14:51:11 	Book details found!
+level info: Jul-23-2026 14:51:14 	Book updated!

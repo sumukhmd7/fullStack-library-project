@@ -1,0 +1,1069 @@
+.manage-books-page {
+  width: 100%;
+  padding: 30px;
+  background: #f6f7fb;
+  min-height: calc(100vh - 72px);
+}
+
+/* ==========================================
+   PAGE HEADER
+========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+/* ==========================================
+  -------NAVBAR------
+========================================== */
+
+.admin-navbar {
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  /* background: #ffffff;
+  border-bottom: 1px solid #e5e7eb; */
+
+  /* position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04); */
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.managebooks-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 18px;
+
+  background: #ffffff;
+  color: #5b4ee6;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06);
+}
+
+.managebooks-back-btn:hover {
+  background: #f5f3ff;
+  border-color: #c4b5fd;
+  color: #4c3dd6;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(91, 78, 230, 0.15);
+}
+
+.managebooks-back-btn:active {
+  transform: translateY(0);
+}
+
+.managebooks-back-btn:focus-visible {
+  outline: 3px solid rgba(91, 78, 230, 0.2);
+  outline-offset: 2px;
+}
+
+.navbar-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.navbar-subtitle {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.navbar-right button {
+  height: 40px;
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #6155df;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.navbar-right button:hover {
+  background: #5044cf;
+  box-shadow: 0 6px 16px rgba(97, 85, 223, 0.25);
+}
+
+.manage-books-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.manage-books-header h1 {
+  color: #111827;
+  font-size: 26px;
+  font-weight: 650;
+  margin-bottom: 7px;
+}
+
+.manage-books-header p {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.add-book-button {
+  border: none;
+  background: #6155df;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.25s,
+    transform 0.2s,
+    box-shadow 0.25s;
+}
+
+.add-book-button:hover {
+  background: #5044cf;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(97, 85, 223, 0.3);
+}
+
+/* ==========================================
+   BOOK TOOLBAR
+========================================== */
+
+.books-toolbar {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 9px 9px 0 0;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.book-search {
+  width: 380px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #dfe3e9;
+  border-radius: 6px;
+  padding: 0 13px;
+  background: #ffffff;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+
+.book-search:focus-within {
+  border-color: #6155df;
+  box-shadow: 0 0 0 3px rgba(97, 85, 223, 0.1);
+}
+
+.book-search span {
+  color: #94a3b8;
+  font-size: 20px;
+}
+
+.book-search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #111827;
+  font-size: 13px;
+}
+
+.book-search input::placeholder {
+  color: #94a3b8;
+}
+
+.books-count {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.books-count strong {
+  color: #111827;
+}
+
+/* ==========================================
+   BOOK TABLE CONTAINER
+========================================== */
+
+.books-table-container {
+  width: 100%;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-radius: 0 0 9px 9px;
+  overflow-x: auto;
+}
+
+/* ==========================================
+   BOOK TABLE
+========================================== */
+
+.books-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 950px;
+}
+
+.books-table thead {
+  background: #f8fafc;
+}
+
+.books-table th {
+  text-align: left;
+  padding: 14px 18px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.books-table td {
+  padding: 16px 18px;
+  color: #374151;
+  font-size: 13px;
+  border-bottom: 1px solid #eef0f3;
+  vertical-align: middle;
+}
+
+.books-table tbody tr {
+  transition: background 0.2s;
+}
+
+.books-table tbody tr:hover {
+  background: #fafaff;
+}
+
+.books-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================
+   BOOK INFORMATION
+========================================== */
+
+.book-info {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 260px;
+}
+
+.book-image {
+  width: 45px;
+  height: 60px;
+  min-width: 45px;
+  border-radius: 5px;
+  object-fit: cover;
+  background: #e5e7eb;
+  border: 1px solid #e5e7eb;
+}
+
+.book-name {
+  display: block;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.book-description {
+  max-width: 220px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-author {
+  font-size: 14px;
+}
+/* ==========================================
+   CATEGORY BADGE
+========================================== */
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 9px;
+  border-radius: 5px;
+  background: #eeeefe;
+  color: #5b50d8;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   BOOK STATUS
+========================================== */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.status.available {
+  background: #dcfce7;
+  color: #16803d;
+}
+
+.status.borrowed {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* ==========================================
+   BOOK ACTIONS
+========================================== */
+
+.book-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-button,
+.delete-button {
+  border: none;
+  padding: 7px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.edit-button {
+  background: #eeeefe;
+  color: #5b50d8;
+}
+
+.edit-button:hover {
+  background: #dedbff;
+  transform: translateY(-1px);
+}
+
+.delete-button {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.delete-button:hover {
+  background: #fecaca;
+  transform: translateY(-1px);
+}
+
+/* ==========================================
+   NO BOOKS
+========================================== */
+
+.no-books {
+  height: 180px;
+  text-align: center;
+  color: #94a3b8 !important;
+  font-size: 15px !important;
+}
+
+/* ==========================================
+   MODAL OVERLAY
+========================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+/* ==========================================
+   BOOK MODAL
+========================================== */
+
+.book-modal {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
+  animation: showBookModal 0.25s ease;
+}
+
+@keyframes showBookModal {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================
+   MODAL HEADER
+========================================== */
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.modal-header h2 {
+  color: #111827;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.modal-header p {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.close-modal {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #00070f;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.close-modal:hover {
+  background: #f1f5f9;
+  color: #111827;
+}
+
+/* ==========================================
+   FORM
+========================================== */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 17px;
+}
+
+.form-group label {
+  color: #374151;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid #dfe3e9;
+  border-radius: 6px;
+  background: white;
+  color: #111827;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 11px 12px;
+  outline: none;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+
+.form-group input {
+  height: 42px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #6155df;
+  box-shadow: 0 0 0 3px rgba(97, 85, 223, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* FILE INPUT */
+
+.form-group input[type="file"] {
+  height: auto;
+  padding: 9px;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.form-group input[type="file"]::file-selector-button {
+  border: none;
+  background: #eeeefe;
+  color: #5b50d8;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-right: 10px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ==========================================
+   MODAL BUTTONS
+========================================== */
+
+.modal-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.cancel-button,
+.save-book-button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 17px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.cancel-button {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.cancel-button:hover {
+  background: #e2e8f0;
+}
+
+.save-book-button {
+  background: #6155df;
+  color: white;
+}
+
+.save-book-button:hover {
+  background: #5044cf;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(97, 85, 223, 0.3);
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+.book-modal::-webkit-scrollbar,
+.books-table-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.book-modal::-webkit-scrollbar-thumb,
+.books-table-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.book-modal::-webkit-scrollbar-track,
+.books-table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET
+========================================== */
+
+@media (max-width: 900px) {
+  .manage-books-page {
+    padding: 22px;
+  }
+
+  .book-search {
+    width: 320px;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+  .manage-books-page {
+    padding: 18px;
+  }
+
+  .manage-books-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .add-book-button {
+    width: 100%;
+  }
+
+  .books-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .book-search {
+    width: 100%;
+  }
+
+  .books-count {
+    text-align: right;
+  }
+
+  .book-modal {
+    padding: 20px;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 450px) {
+  .manage-books-page {
+    padding: 14px;
+  }
+
+  .manage-books-header h1 {
+    font-size: 23px;
+  }
+
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .book-modal {
+    padding: 18px;
+    border-radius: 8px;
+  }
+
+  .modal-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-button,
+  .save-book-button {
+    width: 100%;
+  }
+}
+
+/* ==========================================
+ IMAGE UPLOAD
+========================================== */
+
+.book-image {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.image-modal-content {
+  position: relative;
+}
+
+.popup-image {
+  max-width: 500px;
+  max-height: 700px;
+  border-radius: 10px;
+}
+
+.close-modal {
+  position: absolute;
+  top: -40px;
+  right: 0;
+
+  background: none;
+  border: none;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+/* /* ==========================================
+DESCRIPTION POPUP
+========================================== */
+
+/* .book-description {
+  cursor: pointer;
+}
+
+.description-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.description-popup {
+  position: relative;
+  width: 500px;
+  max-width: 80%;
+  padding: 30px;
+  background: #1e1e1e;
+  color: white;
+  border-radius: 10px;
+}
+
+.description-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}  */
+
+.book-description {
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.book-description:hover {
+  color: #60a5fa;
+  transform: translateX(3px);
+}
+
+/* =========================
+   DESCRIPTION MODAL OVERLAY
+========================= */
+
+.description-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  z-index: 9999;
+
+  animation: overlayFade 0.25s ease;
+}
+
+/* =========================
+   GLASS POPUP
+========================= */
+
+.description-popup {
+  position: relative;
+
+  width: 520px;
+  max-width: 90%;
+
+  max-height: 70vh;
+  overflow-y: auto;
+
+  padding: 35px;
+
+  background: rgba(30, 30, 30, 0.65);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  color: #ffffff;
+
+  animation: popupOpen 0.3s ease;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.description-popup h3 {
+  margin: 0 0 20px;
+
+  font-size: 22px;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  color: #f8fafc;
+}
+
+/* =========================
+   DESCRIPTION TEXT
+========================= */
+
+.description-popup p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.8;
+
+  color: #cbd5e1;
+
+  text-align: left;
+}
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.description-close {
+  position: absolute;
+
+  top: 15px;
+  right: 18px;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 50%;
+
+  color: #cbd5e1;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.description-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+
+  border-color: rgba(239, 68, 68, 0.5);
+
+  color: #f87171;
+
+  transform: rotate(90deg);
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes overlayFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupOpen {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   CUSTOM SCROLLBAR
+========================= */
+
+.description-popup::-webkit-scrollbar {
+  width: 6px;
+}
+
+.description-popup::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.description-popup::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.description-popup::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+
+/* Custom Dropdown Styling */
+.custom-select {
+  width: 100%;
+  padding: 12px 42px 12px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  /* Custom dropdown arrow in #6155DF */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%236155df" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 20px;
+}
+
+/* Hover state */
+.custom-select:hover {
+  border-color: #6155df;
+}
+
+/* Active focus state with glowing ring */
+.custom-select:focus {
+  border-color: #6155df;
+  box-shadow: 0 0 0 4px rgba(97, 85, 223, 0.15);
+}
+
+/* Option tags */
+.custom-select option {
+  padding: 10px;
+  color: #111827;
+  background-color: #ffffff;
+}
+
+/* Placeholder item style */
+.custom-select option[value=""] {
+  color: #9ca3af;
+}

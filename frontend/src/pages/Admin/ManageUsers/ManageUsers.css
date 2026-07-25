@@ -1,0 +1,259 @@
+/* ===========================
+   VIEW USERS PAGE
+=========================== */
+.admin-main.no-sidebar {
+  margin-left: 0 !important;
+  width: 100% !important;
+}
+.view-users-content {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: calc(100vh - 80px);
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.view-users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.view-users-header h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.view-users-header p {
+  color: #6b7280;
+  font-size: 15px;
+}
+
+.search-box input {
+  width: 320px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
+  background: white;
+}
+
+.search-box input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+/* ===========================
+   SUMMARY CARD
+=========================== */
+
+.users-summary-card {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 35px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.summary-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+}
+
+.users-summary-card h2 {
+  font-size: 30px;
+  color: #111827;
+}
+
+.users-summary-card p {
+  color: #6b7280;
+}
+
+/* ===========================
+   USERS GRID
+=========================== */
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* ===========================
+   USER CARD
+=========================== */
+
+.user-card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* ===========================
+   TOP SECTION
+=========================== */
+
+.user-card-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.user-avatar img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.default-avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-basic-info h3 {
+  font-size: 21px;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.user-basic-info p {
+  color: #6b7280;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+/* ===========================
+   DETAILS
+=========================== */
+
+.user-details {
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  padding: 16px 0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-row span:first-child {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.detail-row span:last-child {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.view-details-btn {
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 13px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.view-details-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+.no-users {
+  grid-column: 1/-1;
+  background: white;
+  border-radius: 18px;
+  padding: 70px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.no-users h2 {
+  color: #6b7280;
+  font-size: 28px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+  .view-users-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .view-users-content {
+    padding: 18px;
+  }
+
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-card-top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .detail-row {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+}

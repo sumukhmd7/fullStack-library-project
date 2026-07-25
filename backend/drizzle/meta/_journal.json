@@ -1,0 +1,62 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1772650877381,
+      "tag": "0000_giant_sunfire",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1772898390116,
+      "tag": "0001_warm_young_avengers",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1782739438719,
+      "tag": "0002_parallel_spacker_dave",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1783072369015,
+      "tag": "0003_clumsy_fallen_one",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1783584672040,
+      "tag": "0004_ordinary_killmonger",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783868570050,
+      "tag": "0005_shallow_vargas",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1784048731077,
+      "tag": "0006_dapper_war_machine",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1784703998549,
+      "tag": "0007_burly_daredevil",
+      "breakpoints": true
+    }
+  ]
+}

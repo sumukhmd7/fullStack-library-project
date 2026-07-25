@@ -1,0 +1,330 @@
+level info: Mar-08-2026 18:19:02 	User created successfully
+level error: Mar-09-2026 11:05:22 	User email or phone is already in use!
+level error: Mar-09-2026 11:05:41 	User email or phone is already in use!
+level info: Mar-09-2026 11:06:35 	User created successfully
+level info: Mar-09-2026 21:49:56 	User login success!
+level error: Mar-09-2026 21:59:14 	Missing credentials for "PLAIN"
+level error: Mar-09-2026 22:00:37 	Missing credentials for "PLAIN"
+level error: Mar-09-2026 22:22:40 	Missing credentials for "PLAIN"
+level error: Mar-10-2026 00:33:32 	Missing credentials for "PLAIN"
+level error: Mar-15-2026 19:03:36 	Error occur: Failed query: select "id", "user_name", "user_phone", "user_email", "user_password", "user_address", "user_profile_pic", "user_gender", "borrow_books", "used_passwords", "user_role", "is_active", "created_at", "updated_at" from "users" where "users"."user_phone" = $1
+params: 9999999982
+level error: Mar-15-2026 19:15:21 	Error occur: Failed query: select "id", "user_name", "user_phone", "user_email", "user_password", "user_address", "user_profile_pic", "user_gender", "borrow_books", "used_passwords", "user_role", "is_active", "created_at", "updated_at" from "users" where "users"."user_phone" = $1
+params: 9999999982
+level error: Mar-15-2026 19:19:02 	Error occur: Failed query: select "id", "user_name", "user_phone", "user_email", "user_password", "user_address", "user_profile_pic", "user_gender", "borrow_books", "used_passwords", "user_role", "is_active", "created_at", "updated_at" from "users" where "users"."user_phone" = $1
+params: 9999999982
+level error: Mar-15-2026 19:21:28 	Error occur: Failed query: select "id", "user_name", "user_phone", "user_email", "user_password", "user_address", "user_profile_pic", "user_gender", "borrow_books", "used_passwords", "user_role", "is_active", "created_at", "updated_at" from "users" where "users"."user_phone" = $1
+params: 9999999982
+level error: Mar-15-2026 19:23:14 	Error occur: Failed query: select "id", "user_name", "user_phone", "user_email", "user_password", "user_address", "user_profile_pic", "user_gender", "borrow_books", "used_passwords", "user_role", "is_active", "created_at", "updated_at" from "users" where "users"."user_phone" = $1
+params: 9999999982
+level error: Mar-15-2026 19:29:58 	Error occur: Failed query: select "id", "user_name", "user_phone", "user_email", "user_password", "user_address", "user_profile_pic", "user_gender", "borrow_books", "used_passwords", "user_role", "is_active", "created_at", "updated_at" from "users" where "users"."user_phone" = $1
+params: 9999999982
+level info: Mar-15-2026 19:42:55 	User created successfully
+level info: Mar-15-2026 19:50:50 	User login success!
+level info: Mar-29-2026 13:16:42 	User created successfully
+level info: Mar-29-2026 13:18:33 	User login success!
+level info: Jun-18-2026 23:46:07 	User created successfully
+level info: Jun-19-2026 00:05:47 	User created successfully
+level info: Jun-21-2026 18:27:17 	User created successfully
+level info: Jun-21-2026 18:28:46 	User created successfully
+level info: Jun-21-2026 18:31:00 	User created successfully
+level error: Jun-21-2026 18:31:04 	User email or phone is already in use!
+level error: Jun-21-2026 18:40:35 	User email or phone is already in use!
+level info: Jun-21-2026 18:42:17 	User created successfully
+level error: Jun-21-2026 18:44:10 	User email or phone is already in use!
+level error: Jun-21-2026 18:45:23 	User email or phone is already in use!
+level error: Jun-21-2026 18:48:19 	User email or phone is already in use!
+level info: Jun-22-2026 18:26:41 	User created successfully
+level info: Jun-22-2026 18:28:00 	User login success!
+level error: Jun-22-2026 18:30:28 	User password or email is incorrect!
+level error: Jun-22-2026 18:30:28 	User password or email is incorrect!
+level error: Jun-22-2026 18:30:28 	User password or email is incorrect!
+level error: Jun-22-2026 18:30:28 	User password or email is incorrect!
+level error: Jun-22-2026 18:30:29 	User password or email is incorrect!
+level error: Jun-22-2026 18:30:29 	User password or email is incorrect!
+level error: Jun-22-2026 18:30:29 	User password or email is incorrect!
+level info: Jun-22-2026 18:30:42 	User login success!
+level info: Jun-22-2026 18:33:29 	User login success!
+level info: Jun-22-2026 18:40:22 	User login success!
+level info: Jun-23-2026 07:26:17 	User login success!
+level info: Jun-23-2026 18:51:13 	User login success!
+level info: Jun-23-2026 19:15:54 	User login success!
+level error: Jun-23-2026 19:16:59 	User email or phone is already in use!
+level info: Jun-23-2026 19:18:35 	User created successfully
+level info: Jun-23-2026 19:19:13 	User login success!
+level error: Jun-24-2026 18:05:09 	User password or email is incorrect!
+level info: Jun-24-2026 18:05:15 	User login success!
+level info: Jun-24-2026 18:05:28 	User login success!
+level info: Jun-24-2026 18:05:36 	User login success!
+level info: Jun-24-2026 19:23:14 	User created successfully
+level error: Jun-24-2026 19:27:33 	and is not defined
+level error: Jun-24-2026 19:28:13 	and is not defined
+level error: Jun-24-2026 19:32:10 	and is not defined
+level info: Jun-24-2026 19:36:59 	User got the mail for reset their password
+level info: Jun-24-2026 19:42:45 	User got the mail for reset their password
+level info: Jun-25-2026 14:54:14 	User created successfully
+level info: Jun-25-2026 14:54:48 	User login success!
+level info: Jun-25-2026 15:00:52 	User got the mail for reset their password
+level info: Jun-25-2026 15:13:06 	User login success!
+level info: Jun-25-2026 16:55:26 	User login success!
+level info: Jun-25-2026 16:56:00 	User login success!
+level info: Jun-25-2026 16:56:31 	User login success!
+level info: Jun-25-2026 17:11:00 	User login success!
+level info: Jun-25-2026 17:11:21 	User login success!
+level info: Jun-25-2026 17:11:26 	User login success!
+level info: Jun-25-2026 17:11:30 	User login success!
+level info: Jun-25-2026 17:23:04 	User login success!
+level info: Jun-25-2026 17:30:15 	User login success!
+level info: Jun-25-2026 17:33:38 	User login success!
+level error: Jun-25-2026 17:34:24 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:24 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:25 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:25 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:25 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:25 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:25 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:25 	User password or email is incorrect!
+level error: Jun-25-2026 17:34:25 	User password or email is incorrect!
+level info: Jun-25-2026 17:34:33 	User login success!
+level info: Jun-29-2026 13:23:06 	User created successfully
+level error: Jun-29-2026 13:45:43 	User email or phone is already in use!
+level error: Jun-29-2026 13:50:39 	User email or phone is already in use!
+level info: Jun-29-2026 13:52:17 	User created successfully
+level info: Jun-29-2026 13:55:44 	User login success!
+level info: Jun-29-2026 13:56:54 	User got the mail for reset their password
+level error: Jul-01-2026 08:14:06 	User password or email is incorrect!
+level error: Jul-01-2026 08:14:07 	User password or email is incorrect!
+level error: Jul-01-2026 08:14:09 	User password or email is incorrect!
+level error: Jul-01-2026 08:14:09 	User password or email is incorrect!
+level info: Jul-01-2026 08:14:18 	User login success!
+level info: Jul-01-2026 08:14:40 	User login success!
+level error: Jul-01-2026 08:19:22 	User password or email is incorrect!
+level error: Jul-01-2026 08:19:27 	User password or email is incorrect!
+level info: Jul-01-2026 08:19:39 	User login success!
+level info: Jul-03-2026 12:13:38 	User login success!
+level error: Jul-03-2026 13:09:33 	User password or email is incorrect!
+level info: Jul-03-2026 13:09:42 	User login success!
+level error: Jul-03-2026 13:13:00 	User password or email is incorrect!
+level info: Jul-03-2026 13:13:14 	User login success!
+level error: Jul-03-2026 14:26:47 	User password or email is incorrect!
+level info: Jul-03-2026 14:26:55 	User login success!
+level info: Jul-03-2026 17:03:20 	User created successfully
+level info: Jul-03-2026 17:19:59 	User created successfully
+level info: Jul-03-2026 17:31:16 	User created successfully
+level error: Jul-03-2026 19:10:38 	User email or phone is already in use!
+level error: Jul-03-2026 19:10:47 	User email or phone is already in use!
+level error: Jul-03-2026 19:11:35 	User email or phone is already in use!
+level info: Jul-03-2026 19:13:29 	User created successfully
+level error: Jul-03-2026 19:13:32 	Error occur: secretOrPrivateKey must have a value
+level error: Jul-03-2026 19:15:23 	User email or phone is already in use!
+level info: Jul-03-2026 19:16:24 	User created successfully
+level error: Jul-03-2026 19:16:27 	Error occur: secretOrPrivateKey must have a value
+level info: Jul-03-2026 19:19:36 	User created successfully
+level error: Jul-03-2026 19:19:39 	Error occur: secretOrPrivateKey must have a value
+level error: Jul-03-2026 19:23:13 	User email or phone is already in use!
+level info: Jul-03-2026 19:24:26 	User created successfully
+level info: Jul-03-2026 19:36:13 	User created successfully
+level info: Jul-04-2026 12:06:52 	User created successfully
+level info: Jul-04-2026 12:34:56 	User created successfully
+level info: Jul-04-2026 12:37:58 	User created successfully
+level error: Jul-04-2026 12:38:01 	Error occur: Cannot set headers after they are sent to the client
+level info: Jul-04-2026 12:41:36 	User created successfully
+level error: Jul-04-2026 12:41:39 	Error occur: Cannot set headers after they are sent to the client
+level error: Jul-04-2026 14:11:18 	User password or email is incorrect!
+level error: Jul-04-2026 14:11:28 	User password or email is incorrect!
+level info: Jul-04-2026 14:12:02 	User login success!
+level info: Jul-04-2026 14:13:09 	User created successfully
+level error: Jul-04-2026 16:40:58 	User password or email is incorrect!
+level error: Jul-04-2026 16:41:01 	User password or email is incorrect!
+level info: Jul-04-2026 17:02:54 	User login success!
+level error: Jul-04-2026 17:42:09 	User password or email is incorrect!
+level error: Jul-04-2026 17:42:31 	User password or email is incorrect!
+level error: Jul-04-2026 17:46:15 	User password or email is incorrect!
+level error: Jul-04-2026 17:46:15 	User password or email is incorrect!
+level error: Jul-04-2026 17:46:20 	User password or email is incorrect!
+level error: Jul-04-2026 17:47:44 	User password or email is incorrect!
+level error: Jul-04-2026 17:48:21 	User password or email is incorrect!
+level error: Jul-04-2026 17:50:38 	User password or email is incorrect!
+level info: Jul-06-2026 15:44:09 	User created successfully
+level info: Jul-06-2026 15:51:50 	User login success!
+level info: Jul-06-2026 15:55:53 	User login success!
+level info: Jul-06-2026 17:57:10 	User login success!
+level info: Jul-06-2026 19:18:38 	User created successfully
+level error: Jul-06-2026 19:28:15 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:28 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:28 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:28 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:29 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:29 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:31 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:31 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:39 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:46 	User email or phone is already in use!
+level error: Jul-06-2026 19:28:46 	User email or phone is already in use!
+level error: Jul-06-2026 19:30:15 	User password or email is incorrect!
+level info: Jul-06-2026 19:41:54 	User Already Exists
+level info: Jul-06-2026 19:41:55 	User created successfully
+level info: Jul-06-2026 19:43:56 	User login success!
+level error: Jul-06-2026 19:51:17 	User password or email is incorrect!
+level info: Jul-06-2026 19:51:31 	User login success!
+level error: Jul-06-2026 19:53:16 	User password or email is incorrect!
+level info: Jul-07-2026 00:41:12 	User login success!
+level info: Jul-07-2026 08:14:14 	User login success!
+level info: Jul-07-2026 08:14:48 	User login success!
+level error: Jul-07-2026 08:15:35 	User password or email is incorrect!
+level info: Jul-07-2026 08:15:46 	User login success!
+level info: Jul-07-2026 17:11:27 	User login success!
+level info: Jul-09-2026 10:01:35 	User login success!
+level info: Jul-09-2026 13:05:13 	User login success!
+level info: Jul-09-2026 13:29:29 	User login success!
+level info: Jul-09-2026 13:42:45 	User login success!
+level info: Jul-10-2026 14:20:58 	User login success!
+level info: Jul-10-2026 16:59:17 	User login success!
+level info: Jul-10-2026 18:16:58 	User login success!
+level info: Jul-10-2026 18:51:07 	User Already Exists
+level info: Jul-10-2026 18:51:07 	User created successfully
+level info: Jul-10-2026 19:49:17 	User login success!
+level info: Jul-10-2026 20:37:34 	User login success!
+level info: Jul-11-2026 09:30:29 	User login success!
+level info: Jul-11-2026 09:32:00 	User login success!
+level info: Jul-11-2026 11:46:24 	User login success!
+level info: Jul-11-2026 13:49:22 	User login success!
+level info: Jul-11-2026 13:50:41 	User login success!
+level info: Jul-11-2026 13:51:33 	User login success!
+level info: Jul-11-2026 13:56:36 	User login success!
+level info: Jul-11-2026 14:09:51 	User login success!
+level info: Jul-11-2026 14:15:01 	User login success!
+level info: Jul-11-2026 14:15:05 	User login success!
+level info: Jul-11-2026 14:15:10 	User login success!
+level info: Jul-11-2026 14:23:09 	User login success!
+level info: Jul-11-2026 14:23:12 	User login success!
+level info: Jul-11-2026 14:33:38 	User login success!
+level info: Jul-11-2026 14:39:31 	User login success!
+level info: Jul-11-2026 15:00:03 	User login success!
+level info: Jul-11-2026 17:14:07 	User login success!
+level info: Jul-11-2026 19:10:22 	User login success!
+level info: Jul-11-2026 19:12:29 	User login success!
+level info: Jul-11-2026 23:15:39 	User login success!
+level info: Jul-11-2026 23:16:37 	User login success!
+level info: Jul-11-2026 23:20:54 	User login success!
+level info: Jul-11-2026 23:53:52 	User login success!
+level info: Jul-12-2026 00:58:14 	User login success!
+level info: Jul-12-2026 01:20:02 	User login success!
+level info: Jul-12-2026 12:16:32 	User login success!
+level info: Jul-12-2026 14:44:16 	User login success!
+level info: Jul-12-2026 16:19:35 	User login success!
+level info: Jul-12-2026 19:35:29 	User login success!
+level info: Jul-12-2026 22:29:49 	User login success!
+level info: Jul-13-2026 00:08:51 	User login success!
+level info: Jul-13-2026 00:19:43 	User login success!
+level info: Jul-13-2026 11:58:04 	User login success!
+level info: Jul-13-2026 12:16:27 	User login success!
+level info: Jul-13-2026 12:42:25 	User login success!
+level info: Jul-13-2026 12:42:53 	User login success!
+level info: Jul-13-2026 14:13:30 	User login success!
+level info: Jul-13-2026 14:21:09 	User login success!
+level info: Jul-13-2026 14:32:59 	User login success!
+level info: Jul-13-2026 15:06:35 	User login success!
+level info: Jul-14-2026 09:47:12 	User login success!
+level info: Jul-14-2026 11:20:44 	User login success!
+level info: Jul-14-2026 12:57:25 	User login success!
+level info: Jul-14-2026 14:24:26 	User login success!
+level info: Jul-14-2026 18:56:55 	User login success!
+level info: Jul-14-2026 22:21:33 	User login success!
+level info: Jul-14-2026 23:23:12 	User login success!
+level info: Jul-15-2026 10:55:38 	User login success!
+level info: Jul-15-2026 12:08:11 	User login success!
+level info: Jul-15-2026 13:42:56 	User login success!
+level info: Jul-15-2026 14:43:15 	User login success!
+level info: Jul-15-2026 15:20:06 	User login success!
+level info: Jul-15-2026 17:07:42 	User login success!
+level info: Jul-15-2026 17:31:16 	User login success!
+level info: Jul-16-2026 11:53:27 	User login success!
+level info: Jul-16-2026 13:31:00 	User login success!
+level info: Jul-16-2026 14:17:55 	User login success!
+level info: Jul-16-2026 14:33:54 	User login success!
+level info: Jul-16-2026 16:12:09 	User login success!
+level info: Jul-16-2026 17:39:48 	User login success!
+level info: Jul-16-2026 17:53:41 	User login success!
+level info: Jul-16-2026 18:05:50 	User login success!
+level info: Jul-16-2026 18:54:25 	User login success!
+level info: Jul-16-2026 19:37:41 	User login success!
+level info: Jul-17-2026 09:09:06 	User login success!
+level info: Jul-17-2026 12:52:29 	User login success!
+level info: Jul-17-2026 14:40:02 	User login success!
+level info: Jul-17-2026 15:20:45 	User login success!
+level info: Jul-17-2026 20:15:31 	User login success!
+level info: Jul-17-2026 20:16:14 	User login success!
+level info: Jul-18-2026 12:54:36 	User login success!
+level info: Jul-19-2026 12:05:42 	User login success!
+level info: Jul-19-2026 12:16:20 	User login success!
+level info: Jul-19-2026 12:16:45 	User login success!
+level info: Jul-19-2026 12:16:49 	User login success!
+level info: Jul-19-2026 12:19:36 	User login success!
+level info: Jul-19-2026 12:27:13 	User login success!
+level info: Jul-20-2026 13:51:49 	User login success!
+level info: Jul-20-2026 13:54:58 	User login success!
+level info: Jul-20-2026 13:55:00 	User login success!
+level info: Jul-20-2026 14:15:04 	User login success!
+level info: Jul-20-2026 14:21:23 	User login success!
+level info: Jul-20-2026 14:22:02 	User login success!
+level info: Jul-20-2026 14:35:06 	User login success!
+level info: Jul-20-2026 14:56:37 	User login success!
+level info: Jul-20-2026 15:10:07 	User login success!
+level info: Jul-20-2026 22:52:07 	User login success!
+level info: Jul-20-2026 22:57:42 	User login success!
+level info: Jul-21-2026 00:01:56 	User login success!
+level info: Jul-21-2026 00:54:03 	User login success!
+level info: Jul-21-2026 09:27:34 	User login success!
+level info: Jul-21-2026 10:29:51 	User login success!
+level info: Jul-21-2026 12:24:43 	User login success!
+level info: Jul-21-2026 14:24:56 	User login success!
+level info: Jul-21-2026 14:41:38 	User login success!
+level info: Jul-21-2026 14:42:33 	User login success!
+level info: Jul-21-2026 15:29:36 	User login success!
+level info: Jul-21-2026 16:11:26 	User login success!
+level info: Jul-21-2026 16:11:34 	User login success!
+level info: Jul-21-2026 17:40:05 	User login success!
+level info: Jul-21-2026 17:47:31 	User login success!
+level info: Jul-21-2026 17:56:07 	User login success!
+level info: Jul-21-2026 18:03:16 	User login success!
+level info: Jul-21-2026 19:08:22 	User login success!
+level info: Jul-21-2026 19:24:57 	User login success!
+level info: Jul-22-2026 07:07:28 	User login success!
+level info: Jul-22-2026 07:46:17 	User login success!
+level info: Jul-22-2026 15:12:39 	User login success!
+level info: Jul-22-2026 15:26:26 	User login success!
+level info: Jul-22-2026 15:31:07 	User login success!
+level info: Jul-22-2026 16:12:51 	User login success!
+level info: Jul-22-2026 16:16:12 	User login success!
+level info: Jul-22-2026 16:19:34 	User login success!
+level info: Jul-22-2026 17:24:08 	User login success!
+level info: Jul-22-2026 18:42:31 	User login success!
+level info: Jul-22-2026 19:06:51 	User login success!
+level info: Jul-22-2026 23:12:40 	User login success!
+level info: Jul-23-2026 07:48:50 	User login success!
+level info: Jul-23-2026 08:33:15 	User login success!
+level info: Jul-23-2026 09:39:54 	User login success!
+level info: Jul-23-2026 14:25:53 	User login success!
+level info: Jul-23-2026 14:31:32 	User login success!
+level info: Jul-23-2026 14:42:51 	User login success!
+level info: Jul-23-2026 14:46:21 	User login success!
+level info: Jul-23-2026 14:50:51 	User login success!
+level info: Jul-23-2026 15:00:49 	User login success!
+level info: Jul-23-2026 15:37:05 	User login success!
+level info: Jul-23-2026 17:49:52 	User login success!
+level info: Jul-23-2026 18:26:08 	User login success!
+level info: Jul-23-2026 18:28:44 	User login success!
+level info: Jul-23-2026 23:17:15 	User login success!
+level info: Jul-23-2026 23:38:28 	User login success!
+level info: Jul-23-2026 23:59:31 	User login success!
+level info: Jul-24-2026 00:47:14 	User login success!
+level info: Jul-24-2026 01:49:39 	User login success!
+level info: Jul-24-2026 01:49:47 	User login success!
+level info: Jul-24-2026 22:39:27 	User login success!
+level info: Jul-24-2026 22:40:44 	User login success!
+level info: Jul-24-2026 22:41:43 	User login success!
+level info: Jul-24-2026 23:11:45 	User login success!
+level info: Jul-24-2026 23:12:24 	User login success!
+level info: Jul-24-2026 23:14:01 	User login success!
+level info: Jul-25-2026 02:07:23 	User login success!

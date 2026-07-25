@@ -1,0 +1,103 @@
+.view-books-book-details p {
+  font-size: 14px; /* was likely 12–13px, bumped up */
+}
+
+.view-books-book-details strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3a352e;
+}
+
+/* Status pill — light green for available, red for borrowed */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.status.available {
+  background: #e6f0ea;
+  color: #2f6f4f;
+}
+
+.status.available::before {
+  background: #2f6f4f;
+}
+
+.status.unavailable {
+  background: #fbe9e7;
+  color: #b0413e;
+}
+
+.status.unavailable::before {
+  background: #b0413e;
+}
+
+/* --- Like / Dislike Reaction Row --- */
+.reaction-row {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+
+.reaction-button {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content; /* 👈 Ensures button only takes up space of its content */
+  align-self: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.reaction-button span {
+  font-variant-numeric: tabular-nums;
+}
+
+.reaction-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.reaction-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reaction-button.like-button {
+  background: #e6f0ea;
+  color: #2f6f4f;
+}
+
+.reaction-button.like-button:hover:not(:disabled) {
+  background: #d9e9e0;
+}
+
+.reaction-button.like-button.active {
+  background: #2f6f4f;
+  color: #ffffff;
+}
+
+.reaction-button.like-button.active:hover {
+  background: #27593f;
+}

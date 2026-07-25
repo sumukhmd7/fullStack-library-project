@@ -1,0 +1,126 @@
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #faf6ec;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.profile-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b6459;
+  background: #faf6ec;
+}
+
+.profile-back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: none;
+  border: none;
+  color: #3a352e;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.profile-back-btn:hover {
+  color: #2f6f4f;
+}
+
+.profile-card {
+  width: 380px;
+  max-width: 100%;
+  padding: 36px 32px;
+  text-align: center;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(58, 53, 46, 0.08);
+  border: 1px solid #ece3cc;
+}
+
+.user-profile-avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #2f6f4f;
+}
+
+.profile-card h2 {
+  font-size: 20px;
+  color: #3a352e;
+  margin-bottom: 4px;
+}
+
+.profile-subtitle {
+  font-size: 13px;
+  color: #c9a13b;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.profile-info {
+  text-align: left;
+  border-top: 1px solid #f1ead4;
+  padding-top: 20px;
+}
+
+.profile-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5efdd;
+}
+
+.profile-info-row:last-child {
+  border-bottom: none;
+}
+
+.profile-info-label {
+  font-size: 13px;
+  color: #6b6459;
+  font-weight: 500;
+}
+
+.profile-info-value {
+  font-size: 14px;
+  color: #3a352e;
+  font-weight: 600;
+}
+
+.profile-actions {
+  margin-top: 28px;
+}
+
+.profile-action-btn {
+  width: 100%;
+  background: #e6f0ea;
+  color: #2f6f4f;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.profile-action-btn:hover {
+  background: #d9e9e0;
+}

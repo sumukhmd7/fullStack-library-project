@@ -1,0 +1,298 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ==========================================================
+   DESIGN TOKENS
+   A quiet library-catalog palette: cool paper background,
+   deep emerald as the primary accent (spines, status, focus),
+   muted brass as a secondary accent for price/detail highlights.
+========================================================== */
+
+.view-books-page {
+  --color-bg: #eef1f5;
+  --color-surface: #ffffff;
+  --color-ink: #1b2430;
+  --color-ink-soft: #5b6472;
+  --color-ink-faint: #93a0b0;
+
+  --color-accent: #1f6f5c;
+  --color-accent-dark: #165445;
+  --color-accent-soft: #e3f0ec;
+
+  --color-brass: #a9772f;
+
+  --color-success-bg: #e3f2e9;
+  --color-success-text: #1f6f5c;
+  --color-danger-bg: #fbe9e7;
+  --color-danger-text: #b3392e;
+
+  --border-hairline: #dfe4ea;
+  --shadow-card:
+    0 1px 2px rgba(27, 36, 48, 0.04), 0 12px 24px -12px rgba(27, 36, 48, 0.14);
+  --shadow-card-hover:
+    0 1px 2px rgba(27, 36, 48, 0.05), 0 24px 40px -16px rgba(31, 111, 92, 0.28);
+
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  padding: 40px 44px 64px;
+  background: var(--color-bg);
+  font-family: "Inter", sans-serif;
+  color: var(--color-ink);
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.view-books-header {
+  max-width: 640px;
+  margin-bottom: 32px;
+}
+
+.view-books-header h1 {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-size: 34px;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  margin-bottom: 10px;
+}
+
+.view-books-header p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+}
+
+/* ==========================================================
+   SEARCH
+   Styled like a catalog index card: a quiet underline that
+   deepens to the accent color on focus, rather than a boxed
+   input — a small nod to the subject without being literal.
+========================================================== */
+
+.search-section {
+  margin-bottom: 36px;
+  max-width: 420px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 4px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--border-hairline);
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+
+.search-input::placeholder {
+  color: var(--color-ink-faint);
+}
+
+.search-input:focus {
+  border-bottom-color: var(--color-accent);
+}
+
+/* ==========================================================
+   NO BOOKS
+========================================================== */
+
+.no-books {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.no-books h3 {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--color-ink-soft);
+}
+
+/* ==========================================================
+   BOOKS GRID
+========================================================== */
+
+.view-books-books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+/* ==========================================================
+   BOOK CARD
+   Signature: a 4px "spine" of accent color along the top edge —
+   a quiet reference to a shelved book's spine, carried by every
+   card rather than applied as one-off decoration.
+========================================================== */
+
+.view-books-book-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.view-books-book-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-brass));
+}
+
+.view-books-book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ==========================================================
+   BOOK IMAGE
+========================================================== */
+
+.view-books-book-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--color-accent-soft);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.view-books-book-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.view-books-book-card:hover .book-image img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================
+   BOOK DETAILS
+========================================================== */
+
+.view-books-book-details {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 22px;
+  gap: 6px;
+}
+
+.view-books-book-details h2 {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--color-ink);
+  margin-bottom: 6px;
+}
+
+.view-books-book-details p {
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
+}
+
+.view-books-book-details p strong {
+  color: var(--color-ink);
+  font-weight: 600;
+  margin-right: 3px;
+}
+
+.view-books-book-details .description {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-hairline);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================
+   STATUS BADGE
+========================================================== */
+
+.view-books-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.view-books-status.available {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.view-books-status.unavailable {
+  background: var(--color-danger-bg);
+  color: var(--color-danger-text);
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 900px) {
+  .view-books-view-books-page {
+    padding: 28px 24px 48px;
+  }
+
+  .view-books-books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .view-books-page {
+    padding: 22px 16px 40px;
+  }
+
+  .view-books-header h1 {
+    font-size: 27px;
+  }
+
+  .view-books-books-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .view-books-book-details {
+    padding: 14px 14px 16px;
+  }
+
+  .view-books-book-details h2 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 380px) {
+  .view-books-books-grid {
+    grid-template-columns: 1fr;
+  }
+}

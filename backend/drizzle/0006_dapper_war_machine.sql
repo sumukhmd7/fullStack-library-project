@@ -1,0 +1,1 @@
+ALTER TABLE "books" ADD COLUMN "book_category" varchar(100) DEFAULT 'common';

@@ -1,0 +1,152 @@
+/* ==========================================
+   AVAILABLE BOOKS / BORROWED BOOKS PAGE
+========================================== */
+
+.borrowed-books-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  padding: 30px;
+  background: #f6f7fb;
+}
+
+.borrowed-books-page h1 {
+  color: #111827;
+  font-size: 26px;
+  font-weight: 650;
+  margin-bottom: 24px;
+}
+
+/* ==========================================
+   BOOKS GRID
+========================================== */
+
+.borrowed-books-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+/* Empty state text */
+
+.borrowed-books-container > p {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  padding: 60px 0;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+/* ==========================================
+   BOOK CARD
+========================================== */
+
+.book-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  border-color: #cbc7ff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* IMAGE */
+
+.book-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #f1f5f9;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* CONTENT */
+
+.book-card-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.book-card-content h2 {
+  font-size: 16px;
+  font-weight: 650;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.book-card-content p {
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.book-card-content p strong {
+  color: #374151;
+  font-weight: 600;
+}
+
+/* STATUS BADGE */
+
+.borrowed-status-available,
+.borrowed-status-borrowed {
+  align-self: flex-start;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.borrowed-status-available {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.borrowed-status-borrowed {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  .borrowed-books-page {
+    padding: 22px;
+  }
+
+  .borrowed-books-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 500px) {
+  .borrowed-books-page {
+    padding: 16px;
+  }
+
+  .borrowed-books-container {
+    grid-template-columns: 1fr;
+  }
+
+  .book-card-image {
+    height: 180px;
+  }
+}
