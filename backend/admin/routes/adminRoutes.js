@@ -5,9 +5,18 @@ const userController = require("../../user/controllers/userController");
 const authService = require("../../middlewares/authService");
 const userAuthentication = require("../../middlewares/authToken");
 
+const { loginLimiter } = require("../../middlewares/routeSpecificRateLimiter");
+// const {signupLimiter} = require ("../../middlewares/routeSpecificRateLimiter")
+// const {forgotPasswordLimiter} = require ("../../middlewares/routeSpecificRateLimiter")
+
 const adminRouter = express.Router();
 
-adminRouter.post("/adminLogin", authService.isAdmin, userController.loginUser);
+adminRouter.post(
+  "/adminLogin",
+  loginLimiter,
+  authService.isAdmin,
+  userController.loginUser,
+);
 adminRouter.get(
   "/DashBoard",
   userAuthentication,

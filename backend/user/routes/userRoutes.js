@@ -6,22 +6,35 @@ const userValidator = require("../../validators/userValidations/userValidator");
 const imageStorage = require("../../middlewares/imageStorage");
 const userAuthentication = require("../../middlewares/authToken");
 
+const { loginLimiter } = require("../../middlewares/routeSpecificRateLimiter");
+const { signupLimiter } = require("../../middlewares/routeSpecificRateLimiter");
+const {
+  forgotPasswordLimiter,
+} = require("../../middlewares/routeSpecificRateLimiter");
+
 const userRouter = express.Router();
 
 userRouter.post(
   "/signupUser",
+  signupLimiter,
   userValidator.signupUserValidation,
   userController.signupUser,
 );
 userRouter.post(
   "/userLogin",
+  loginLimiter,
   isUser,
   userValidator.userLoginValidation,
   userController.loginUser,
 );
-userRouter.post("/forgetPassword", userController.forgetPassword);
+userRouter.post(
+  "/forgetPassword",
+  forgotPasswordLimiter,
+  userController.forgetPassword,
+);
 userRouter.post(
   "/resetPassword/:userId/:token",
+  loginLimiter,
   userValidator.resetPasswordValidation,
   userController.resetPassword,
 );

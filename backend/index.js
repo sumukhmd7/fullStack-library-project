@@ -5,8 +5,13 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 require("./config/redisClient");
+const { globalLimiter } = require("./middlewares/routeSpecificRateLimiter");
 
 const app = express();
+
+// Applies to every request
+app.use(globalLimiter);
+
 app.use(
   cors({
     origin: "http://localhost:5173",
