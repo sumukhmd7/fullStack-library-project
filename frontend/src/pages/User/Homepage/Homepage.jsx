@@ -6,82 +6,82 @@ import "./Homepage.css";
 import Browsebooks from "../../Books/Browsebooks.jsx";
 // Placeholder catalog data — swap these for real calls to your
 // GET /book/getallBooks and GET /user/dashboard endpoints.
-const TOP_PICKS = [
-  {
-    id: 1,
-    bookName: "The Quiet Order",
-    bookAuthor: "N. Farrow",
-    bookLikes: 128,
-  },
-  {
-    id: 2,
-    bookName: "Signal & Noise",
-    bookAuthor: "R. Achebe",
-    bookLikes: 104,
-  },
-  { id: 3, bookName: "Empire of Ink", bookAuthor: "C. Voss", bookLikes: 97 },
-  { id: 4, bookName: "Grid Systems", bookAuthor: "M. Lund", bookLikes: 88 },
-];
+// const TOP_PICKS = [
+//   {
+//     id: 1,
+//     bookName: "The Quiet Order",
+//     bookAuthor: "N. Farrow",
+//     bookLikes: 128,
+//   },
+//   {
+//     id: 2,
+//     bookName: "Signal & Noise",
+//     bookAuthor: "R. Achebe",
+//     bookLikes: 104,
+//   },
+//   { id: 3, bookName: "Empire of Ink", bookAuthor: "C. Voss", bookLikes: 97 },
+//   { id: 4, bookName: "Grid Systems", bookAuthor: "M. Lund", bookLikes: 88 },
+// ];
 
-const CATALOG = [
-  {
-    id: 5,
-    bookName: "The Quiet Order",
-    bookAuthor: "N. Farrow",
-    bookCategory: "Fiction",
-    bookCost: 12,
-    bookStatus: "available",
-  },
-  {
-    id: 6,
-    bookName: "Signal & Noise",
-    bookAuthor: "R. Achebe",
-    bookCategory: "Sci-Fi",
-    bookCost: 15,
-    bookStatus: "not available",
-  },
-  {
-    id: 7,
-    bookName: "Empire of Ink",
-    bookAuthor: "C. Voss",
-    bookCategory: "History",
-    bookCost: 18,
-    bookStatus: "available",
-  },
-  {
-    id: 8,
-    bookName: "Grid Systems",
-    bookAuthor: "M. Lund",
-    bookCategory: "Design",
-    bookCost: 22,
-    bookStatus: "available",
-  },
-  {
-    id: 9,
-    bookName: "Field Notes",
-    bookAuthor: "A. Okoro",
-    bookCategory: "Biography",
-    bookCost: 14,
-    bookStatus: "not available",
-  },
-  {
-    id: 10,
-    bookName: "Low Tide",
-    bookAuthor: "S. Marchetti",
-    bookCategory: "Fiction",
-    bookCost: 11,
-    bookStatus: "available",
-  },
-];
+// const CATALOG = [
+//   {
+//     id: 5,
+//     bookName: "The Quiet Order",
+//     bookAuthor: "N. Farrow",
+//     bookCategory: "Fiction",
+//     bookCost: 12,
+//     bookStatus: "available",
+//   },
+//   {
+//     id: 6,
+//     bookName: "Signal & Noise",
+//     bookAuthor: "R. Achebe",
+//     bookCategory: "Sci-Fi",
+//     bookCost: 15,
+//     bookStatus: "not available",
+//   },
+//   {
+//     id: 7,
+//     bookName: "Empire of Ink",
+//     bookAuthor: "C. Voss",
+//     bookCategory: "History",
+//     bookCost: 18,
+//     bookStatus: "available",
+//   },
+//   {
+//     id: 8,
+//     bookName: "Grid Systems",
+//     bookAuthor: "M. Lund",
+//     bookCategory: "Design",
+//     bookCost: 22,
+//     bookStatus: "available",
+//   },
+//   {
+//     id: 9,
+//     bookName: "Field Notes",
+//     bookAuthor: "A. Okoro",
+//     bookCategory: "Biography",
+//     bookCost: 14,
+//     bookStatus: "not available",
+//   },
+//   {
+//     id: 10,
+//     bookName: "Low Tide",
+//     bookAuthor: "S. Marchetti",
+//     bookCategory: "Fiction",
+//     bookCost: 11,
+//     bookStatus: "available",
+//   },
+// ];
 
-const CATEGORIES = [
-  "All",
-  "Fiction",
-  "Sci-Fi",
-  "History",
-  "Design",
-  "Biography",
-];
+// const CATEGORIES = [
+//   "All",
+//   "Fiction",
+//   "Sci-Fi",
+//   "History",
+//   "Design",
+//   "Biography",
+// ];
 
 const Homepage = () => {
   const { user } = useContext(AuthContext);

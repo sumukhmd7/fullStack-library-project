@@ -4,6 +4,7 @@ require("dotenv").config();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+require("./config/redisClient");
 
 const app = express();
 app.use(

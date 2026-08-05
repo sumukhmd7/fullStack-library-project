@@ -1,5 +1,7 @@
 const db = require("../../db");
 
+const redis = require("../../config/redisClient");
+
 const { books } = require("../../drizzle/schemas/bookSchema");
 const { users } = require("../../drizzle/schemas/userSchema");
 const { categories } = require("../../drizzle/schemas/categorySchema");
@@ -11,8 +13,8 @@ const bookLogger = require("../../utils/bookLogger/bookLogger");
 const userLogger = require("../../utils/userLogger/userLogger");
 
 const addBook = async (req, res) => {
-  console.log("✅ Entered addBook controller");
-  console.log(req.body);
+  // console.log("✅ Entered addBook controller");
+  // console.log(req.body);
   try {
     const bookImage = `/uploads/booksImages/${req.file.filename}`;
 
@@ -41,6 +43,8 @@ const addBook = async (req, res) => {
         bookCost: req.body.bookCost,
       })
       .returning();
+
+    await redis.del("books:all");
 
     bookLogger.info("Book added successfully");
 
@@ -93,6 +97,8 @@ const editBook = async (req, res) => {
       });
     }
 
+    await redis.del("books:all");
+
     bookLogger.info("Book updated!");
 
     return res.status(200).send({
@@ -126,6 +132,8 @@ const deleteBook = async (req, res) => {
       });
     }
 
+    await redis.del("books:all");
+
     bookLogger.info("Book deleted!");
 
     res.status(200).send({
@@ -139,6 +147,7 @@ const deleteBook = async (req, res) => {
   }
 };
 
+// ----currently not in use--------
 const searchBookByName = async (req, res) => {
   try {
     const { bookName } = req.params;
@@ -167,6 +176,7 @@ const searchBookByName = async (req, res) => {
   }
 };
 
+// ----currently not in use--------
 const borrowBooks = async (req, res) => {
   try {
     const { userId, bookId } = req.params;
@@ -285,32 +295,51 @@ const bookDetails = async (req, res) => {
   }
 };
 
+// ------- to get all books ------
+
+const BOOKS_CACHE_KEY = "books:all";
+const CACHE_TTL = 3600;
+
 const getallBooks = async (req, res) => {
   try {
     // const allBooks = await db.select().from(books);
     // .where(and(eq(books.bookStatus, "available"), eq(books.isActive, true)));
+    let allBooks;
 
-    const allBooks = await db
-      .select({
-        id: books.id,
-        bookName: books.bookName,
-        bookDescription: books.bookDescription,
-        bookAuthor: books.bookAuthor,
-        categoryId: books.categoryId,
-        categoryName: categories.categoryName,
-        bookImage: books.bookImage,
-        bookStatus: books.bookStatus,
-        bookCost: books.bookCost,
-        bookLikes: books.bookLikes,
-        likeByUsers: books.likeByUsers,
-        bookDislikes: books.bookDislikes,
-        // currentOwner: books.currentOwner,
-        isActive: books.isActive,
-        createdAt: books.createdAt,
-        updatedAt: books.updatedAt,
-      })
-      .from(books)
-      .leftJoin(categories, eq(books.categoryId, categories.id));
+    const cached = await redis.get(BOOKS_CACHE_KEY);
+
+    if (cached) {
+      allBooks = JSON.parse(cached);
+    } else {
+      allBooks = await db
+        .select({
+          id: books.id,
+          bookName: books.bookName,
+          bookDescription: books.bookDescription,
+          bookAuthor: books.bookAuthor,
+          categoryId: books.categoryId,
+          categoryName: categories.categoryName,
+          bookImage: books.bookImage,
+          bookStatus: books.bookStatus,
+          bookCost: books.bookCost,
+          bookLikes: books.bookLikes,
+          likeByUsers: books.likeByUsers,
+          bookDislikes: books.bookDislikes,
+          // currentOwner: books.currentOwner,
+          isActive: books.isActive,
+          createdAt: books.createdAt,
+          updatedAt: books.updatedAt,
+        })
+        .from(books)
+        .leftJoin(categories, eq(books.categoryId, categories.id));
+
+      await redis.set(
+        BOOKS_CACHE_KEY,
+        JSON.stringify(allBooks),
+        "EX",
+        CACHE_TTL,
+      );
+    }
 
     const userId = req.user?.userId; // optional chaining in case route isn't auth-protected
     const booksWithLikeStatus = allBooks.map((book) => ({
@@ -335,6 +364,7 @@ const getallBooks = async (req, res) => {
   }
 };
 
+// -----currently not in use------
 const returnBook = async (req, res) => {
   try {
     const { userId, bookId } = req.params;
@@ -399,7 +429,7 @@ const returnBook = async (req, res) => {
 
 const toggleLikeBook = async (req, res) => {
   try {
-    const userId = req.user.userId; // from JWT
+    const userId = req.user.userId;
     const { bookId } = req.params;
 
     const result = await db.transaction(async (tx) => {
@@ -407,7 +437,7 @@ const toggleLikeBook = async (req, res) => {
         .select()
         .from(books)
         .where(eq(books.id, bookId))
-        .for("update"); // locks this row until the transaction finishes
+        .for("update");
 
       if (!bookData.length) {
         throw new Error("BOOK_NOT_FOUND");
@@ -438,8 +468,28 @@ const toggleLikeBook = async (req, res) => {
         .set({ likeByUsers, bookLikes })
         .where(eq(books.id, bookId));
 
-      return { bookLikes, userLiked };
+      // return likeByUsers too — you need it to patch the cache accurately
+      return { bookLikes, userLiked, likeByUsers };
     });
+
+    // Patch the cache in place — no extra DB read needed
+    try {
+      const cached = await redis.get("books:all");
+      if (cached) {
+        const allBooks = JSON.parse(cached);
+        const cachedBook = allBooks.find((b) => b.id === bookId);
+        if (cachedBook) {
+          cachedBook.bookLikes = result.bookLikes;
+          cachedBook.likeByUsers = result.likeByUsers;
+        }
+        await redis.set("books:all", JSON.stringify(allBooks), "EX", CACHE_TTL);
+      }
+      // topPicks ranking may have changed — safer to invalidate than patch
+      await redis.del("books:topPicks");
+    } catch (cacheError) {
+      bookLogger.error(`Cache update failed: ${cacheError.message}`);
+      // don't rethrow — DB write already succeeded, cache staleness isn't fatal
+    }
 
     return res.status(200).send({
       success: true,
@@ -546,8 +596,20 @@ const getBooksByCategory = async (req, res) => {
   }
 };
 
+const TOP_PICKS_CACHE_KEY = "books:topPicks";
+// const CACHE_TTL = 3600; ---> comment out this because already one time its declared
+
 const getTopPicks = async (req, res) => {
   try {
+    const cached = await redis.get(TOP_PICKS_CACHE_KEY);
+
+    if (cached) {
+      return res.status(200).send({
+        success: true,
+        topPicks: JSON.parse(cached),
+      });
+    }
+
     const topPicks = await db
       .select({
         id: books.id,
@@ -560,6 +622,13 @@ const getTopPicks = async (req, res) => {
       .where(eq(books.isActive, true))
       .orderBy(desc(books.bookLikes))
       .limit(4);
+
+    await redis.set(
+      TOP_PICKS_CACHE_KEY,
+      JSON.stringify(topPicks),
+      "EX",
+      CACHE_TTL,
+    );
 
     return res.status(200).send({
       success: true,

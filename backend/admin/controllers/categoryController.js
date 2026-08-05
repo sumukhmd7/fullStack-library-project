@@ -4,12 +4,16 @@ const categoryLogger = require("../../utils/categoryLogger/categoryLogger");
 const db = require("../../db");
 const { eq, count } = require("drizzle-orm");
 
+const redis = require("../../config/redisClient");
+
 // ADD CATEGORY
 const addCategory = async (req, res) => {
   try {
     await db.insert(categories).values({
       categoryName: req.body.categoryName,
     });
+
+    await redis.del("categories:all");
 
     categoryLogger.info("Category created!");
 
@@ -48,6 +52,8 @@ const editCategory = async (req, res) => {
       });
     }
 
+    await redis.del("categories:all");
+
     categoryLogger.info("Category edited!");
 
     res.status(200).send({
@@ -82,6 +88,8 @@ const deleteCategory = async (req, res) => {
       });
     }
 
+    await redis.del("categories:all");
+
     categoryLogger.info("Category deleted");
 
     res.status(200).send({
@@ -100,8 +108,25 @@ const deleteCategory = async (req, res) => {
 };
 
 // GET ALL CATEGORY
+const CACHE_KEY = "categories:all";
+const CACHE_TTL = 3600; // seconds, tune as needed
+
 const allCategories = async (req, res) => {
   try {
+    const start = Date.now();
+    // 1. Try Redis first
+    const cached = await redis.get(CACHE_KEY);
+
+    if (cached) {
+      categoryLogger.info("All category (cache hit)");
+      return res.status(200).send({
+        success: true,
+        message: "All category",
+        categories: JSON.parse(cached),
+      });
+    }
+
+    // 2. Cache miss -> hit DB
     const categoryData = await db
       .select({
         id: categories.id,
@@ -112,7 +137,10 @@ const allCategories = async (req, res) => {
       .leftJoin(books, eq(books.categoryId, categories.id))
       .groupBy(categories.id, categories.categoryName);
 
-    categoryLogger.info("All category");
+    // 3. Set Redis (ioredis positional args: key, value, "EX", seconds)
+    await redis.set(CACHE_KEY, JSON.stringify(categoryData), "EX", CACHE_TTL);
+
+    categoryLogger.info("All category (cache miss, DB hit)");
 
     res.status(200).send({
       success: true,
