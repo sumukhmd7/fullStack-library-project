@@ -302,11 +302,19 @@ const CACHE_TTL = 3600;
 
 const getallBooks = async (req, res) => {
   try {
-    // const allBooks = await db.select().from(books);
-    // .where(and(eq(books.bookStatus, "available"), eq(books.isActive, true)));
     let allBooks;
+    let cached = null;
 
-    const cached = await redis.get(BOOKS_CACHE_KEY);
+    // Isolate Redis failure — don't let it kill the whole request
+    try {
+      cached = await redis.get(BOOKS_CACHE_KEY);
+    } catch (redisErr) {
+      console.error(
+        "⚠️ Redis unavailable, falling back to DB:",
+        redisErr.message,
+      );
+      cached = null;
+    }
 
     if (cached) {
       allBooks = JSON.parse(cached);
@@ -325,7 +333,6 @@ const getallBooks = async (req, res) => {
           bookLikes: books.bookLikes,
           likeByUsers: books.likeByUsers,
           bookDislikes: books.bookDislikes,
-          // currentOwner: books.currentOwner,
           isActive: books.isActive,
           createdAt: books.createdAt,
           updatedAt: books.updatedAt,
@@ -333,15 +340,23 @@ const getallBooks = async (req, res) => {
         .from(books)
         .leftJoin(categories, eq(books.categoryId, categories.id));
 
-      await redis.set(
-        BOOKS_CACHE_KEY,
-        JSON.stringify(allBooks),
-        "EX",
-        CACHE_TTL,
-      );
+      // Isolate the SET too — don't fail the request just because caching failed
+      try {
+        await redis.set(
+          BOOKS_CACHE_KEY,
+          JSON.stringify(allBooks),
+          "EX",
+          CACHE_TTL,
+        );
+      } catch (redisErr) {
+        console.error(
+          "⚠️ Redis SET failed, continuing without cache:",
+          redisErr.message,
+        );
+      }
     }
 
-    const userId = req.user?.userId; // optional chaining in case route isn't auth-protected
+    const userId = req.user?.userId;
     const booksWithLikeStatus = allBooks.map((book) => ({
       ...book,
       userLiked: userId ? book.likeByUsers?.includes(userId) || false : false,
@@ -350,12 +365,11 @@ const getallBooks = async (req, res) => {
     return res.status(200).send({
       success: true,
       totalBooks: allBooks.length,
-      books: allBooks,
+      books: allBooks, // consider returning booksWithLikeStatus instead — see note below
     });
   } catch (error) {
     console.log(error.message);
     console.error("full stack error", error);
-
     return res.status(500).send({
       success: false,
       message: "Error while fetching books",
@@ -597,11 +611,19 @@ const getBooksByCategory = async (req, res) => {
 };
 
 const TOP_PICKS_CACHE_KEY = "books:topPicks";
-// const CACHE_TTL = 3600; ---> comment out this because already one time its declared
+// const CACHE_TTL = 3600; // make sure this is defined in THIS file's scope
 
 const getTopPicks = async (req, res) => {
   try {
-    const cached = await redis.get(TOP_PICKS_CACHE_KEY);
+    let cached = null;
+    try {
+      cached = await redis.get(TOP_PICKS_CACHE_KEY);
+    } catch (redisErr) {
+      console.error(
+        "⚠️ Redis GET failed (topPicks), falling back to DB:",
+        redisErr.message,
+      );
+    }
 
     if (cached) {
       return res.status(200).send({
@@ -623,12 +645,16 @@ const getTopPicks = async (req, res) => {
       .orderBy(desc(books.bookLikes))
       .limit(4);
 
-    await redis.set(
-      TOP_PICKS_CACHE_KEY,
-      JSON.stringify(topPicks),
-      "EX",
-      CACHE_TTL,
-    );
+    try {
+      await redis.set(
+        TOP_PICKS_CACHE_KEY,
+        JSON.stringify(topPicks),
+        "EX",
+        CACHE_TTL,
+      );
+    } catch (redisErr) {
+      console.error("⚠️ Redis SET failed (topPicks):", redisErr.message);
+    }
 
     return res.status(200).send({
       success: true,

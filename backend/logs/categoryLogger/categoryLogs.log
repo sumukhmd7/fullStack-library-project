@@ -1026,3 +1026,69 @@ level info: Aug-05-2026 08:45:29 	All category (cache hit)
 level info: Aug-05-2026 08:45:31 	All category (cache hit)
 level info: Aug-05-2026 08:46:02 	All category (cache hit)
 level info: Aug-05-2026 08:46:05 	All category (cache hit)
+level error: Aug-05-2026 12:07:02 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:07:02 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:08:49 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:19:34 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:19:34 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:21:21 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:23:08 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:35:27 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:35:27 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:35:27 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:35:27 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:35:27 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:35:27 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:37:42 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:37:42 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:37:42 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:37:42 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:39:29 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:39:29 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:39:30 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:41:17 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:43:04 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 12:43:04 	Error: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:02:19 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:02:19 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:02:19 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:04:06 	⚠️ Redis SET failed: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level info: Aug-05-2026 13:04:06 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:04:06 	⚠️ Redis SET failed: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level info: Aug-05-2026 13:04:06 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:04:06 	⚠️ Redis SET failed: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level info: Aug-05-2026 13:04:06 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:05:53 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:05:53 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:07:40 	⚠️ Redis SET failed: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level info: Aug-05-2026 13:07:40 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:07:41 	⚠️ Redis SET failed: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level info: Aug-05-2026 13:07:41 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:09:28 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:09:28 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:11:28 	⚠️ Redis GET failed, falling back to DB: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level error: Aug-05-2026 13:13:15 	⚠️ Redis SET failed: Reached the max retries per request limit (which is 20). Refer to "maxRetriesPerRequest" option for details.
+level info: Aug-05-2026 13:13:15 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:58:56 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Aug-05-2026 13:58:56 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Aug-05-2026 13:58:56 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:59:02 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Aug-05-2026 13:59:02 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Aug-05-2026 13:59:02 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:59:07 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Aug-05-2026 13:59:07 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Aug-05-2026 13:59:07 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:59:10 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Aug-05-2026 13:59:10 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Aug-05-2026 13:59:10 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:59:18 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Aug-05-2026 13:59:18 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Aug-05-2026 13:59:18 	All category (cache miss, DB hit)
+level error: Aug-05-2026 13:59:23 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Aug-05-2026 13:59:23 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Aug-05-2026 13:59:23 	All category (cache miss, DB hit)
+level info: Aug-05-2026 14:03:06 	All category (cache miss, DB hit)
+level info: Aug-05-2026 14:03:12 	All category (cache hit)
+level info: Aug-05-2026 14:03:16 	All category (cache hit)
+level info: Aug-05-2026 14:03:17 	All category (cache hit)
+level info: Aug-05-2026 14:03:18 	All category (cache hit)

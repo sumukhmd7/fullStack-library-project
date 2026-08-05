@@ -109,13 +109,18 @@ const deleteCategory = async (req, res) => {
 
 // GET ALL CATEGORY
 const CACHE_KEY = "categories:all";
-const CACHE_TTL = 3600; // seconds, tune as needed
+const CACHE_TTL = 3600;
 
 const allCategories = async (req, res) => {
   try {
-    const start = Date.now();
-    // 1. Try Redis first
-    const cached = await redis.get(CACHE_KEY);
+    let cached = null;
+    try {
+      cached = await redis.get(CACHE_KEY);
+    } catch (redisErr) {
+      categoryLogger.error(
+        `⚠️ Redis GET failed, falling back to DB: ${redisErr.message}`,
+      );
+    }
 
     if (cached) {
       categoryLogger.info("All category (cache hit)");
@@ -126,7 +131,6 @@ const allCategories = async (req, res) => {
       });
     }
 
-    // 2. Cache miss -> hit DB
     const categoryData = await db
       .select({
         id: categories.id,
@@ -137,8 +141,11 @@ const allCategories = async (req, res) => {
       .leftJoin(books, eq(books.categoryId, categories.id))
       .groupBy(categories.id, categories.categoryName);
 
-    // 3. Set Redis (ioredis positional args: key, value, "EX", seconds)
-    await redis.set(CACHE_KEY, JSON.stringify(categoryData), "EX", CACHE_TTL);
+    try {
+      await redis.set(CACHE_KEY, JSON.stringify(categoryData), "EX", CACHE_TTL);
+    } catch (redisErr) {
+      categoryLogger.error(`⚠️ Redis SET failed: ${redisErr.message}`);
+    }
 
     categoryLogger.info("All category (cache miss, DB hit)");
 
@@ -149,7 +156,6 @@ const allCategories = async (req, res) => {
     });
   } catch (error) {
     categoryLogger.error(`Error: ${error.message}`);
-
     res.status(500).send({
       success: false,
       message: "Error!",
