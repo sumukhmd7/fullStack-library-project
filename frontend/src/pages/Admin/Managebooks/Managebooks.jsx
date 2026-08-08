@@ -320,8 +320,15 @@ const ManageBooks = () => {
 
   // Cache-busting so a re-uploaded image (same filename, new content)
   // actually shows the new image instead of a stale cached one.
+  //
+  // Full external URLs (e.g. from CSV-imported books using Open Library
+  // covers) are used as-is — only locally-uploaded images (relative paths
+  // like /uploads/booksImages/xyz.webp) need the backend host prefixed,
+  // and only those benefit from a cache-busting query param.
   const getImageUrl = (imagePath, updatedAt) => {
     if (!imagePath) return "";
+    if (imagePath.startsWith("http")) return imagePath;
+
     const version = updatedAt ? new Date(updatedAt).getTime() : imagePath;
     return `${API_BASE_URL}${imagePath}?v=${encodeURIComponent(version)}`;
   };

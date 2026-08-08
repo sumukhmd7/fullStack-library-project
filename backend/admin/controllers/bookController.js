@@ -304,8 +304,10 @@ const getallBooks = async (req, res) => {
   try {
     let allBooks;
     let cached = null;
+    let source = "db"; // will flip to "redis" if cache hit
+    let fetchTimeMs = 0;
 
-    // Isolate Redis failure — don't let it kill the whole request
+    const redisStart = Date.now();
     try {
       cached = await redis.get(BOOKS_CACHE_KEY);
     } catch (redisErr) {
@@ -315,10 +317,18 @@ const getallBooks = async (req, res) => {
       );
       cached = null;
     }
+    const redisElapsed = Date.now() - redisStart;
 
     if (cached) {
+      const parseStart = Date.now();
       allBooks = JSON.parse(cached);
+      source = "redis";
+      fetchTimeMs = redisElapsed + (Date.now() - parseStart);
+      console.log(
+        `✅ Served from Redis in ${fetchTimeMs}ms (GET took ${redisElapsed}ms)`,
+      );
     } else {
+      const dbStart = Date.now();
       allBooks = await db
         .select({
           id: books.id,
@@ -339,8 +349,12 @@ const getallBooks = async (req, res) => {
         })
         .from(books)
         .leftJoin(categories, eq(books.categoryId, categories.id));
+      fetchTimeMs = Date.now() - dbStart;
+      source = "db";
+      console.log(
+        `🐘 Served from DB in ${fetchTimeMs}ms (Redis GET was empty/miss, took ${redisElapsed}ms)`,
+      );
 
-      // Isolate the SET too — don't fail the request just because caching failed
       try {
         await redis.set(
           BOOKS_CACHE_KEY,
@@ -365,7 +379,9 @@ const getallBooks = async (req, res) => {
     return res.status(200).send({
       success: true,
       totalBooks: allBooks.length,
-      books: allBooks, // consider returning booksWithLikeStatus instead — see note below
+      source, // "redis" or "db"
+      fetchTimeMs, // how long that path took
+      books: allBooks,
     });
   } catch (error) {
     console.log(error.message);

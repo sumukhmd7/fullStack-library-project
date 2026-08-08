@@ -22,7 +22,7 @@ userRouter.post(
 );
 userRouter.post(
   "/userLogin",
-  loginLimiter,
+  // loginLimiter,
   isUser,
   userValidator.userLoginValidation,
   userController.loginUser,

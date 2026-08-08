@@ -38,10 +38,15 @@ const Borrowedbooks = () => {
   }, []);
 
   // -------- GET IMAGE ---------
-
+  // Full external URLs (e.g. from CSV-imported books using Open Library
+  // covers) are used as-is — only locally-uploaded images (relative paths
+  // like /uploads/booksImages/xyz.webp) need the backend host prefixed,
+  // and only those benefit from a cache-busting query param.
   const getImageUrl = (imagePath, updatedAt) => {
     const API_BASE_URL = "http://localhost:8000";
     if (!imagePath) return "";
+    if (imagePath.startsWith("http")) return imagePath;
+
     const version = updatedAt ? new Date(updatedAt).getTime() : imagePath;
     return `${API_BASE_URL}${imagePath}?v=${encodeURIComponent(version)}`;
   };
@@ -55,7 +60,7 @@ const Borrowedbooks = () => {
           borrowedBooks.map((book) => (
             <div className="book-card" key={book.id}>
               <img
-                src={`http://localhost:8000${book.bookImage}`}
+                src={getImageUrl(book.bookImage, book.updatedAt)}
                 alt={book.bookName}
                 className="book-card-image"
                 onClick={() => {

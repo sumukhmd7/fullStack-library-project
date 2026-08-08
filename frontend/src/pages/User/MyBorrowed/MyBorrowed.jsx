@@ -3,6 +3,18 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./MyBorrowed.css";
 
+const API_BASE_URL = "http://localhost:8000";
+
+// Full external URLs (e.g. from CSV-imported books using Open Library
+// covers) are used as-is. Only locally-uploaded images (relative paths
+// like /uploads/booksImages/xyz.webp) need the backend host prefixed.
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return "";
+  return imagePath.startsWith("http")
+    ? imagePath
+    : `${API_BASE_URL}${imagePath}`;
+};
+
 const MyBorrowed = () => {
   const [borrowedBooks, setBorrowedBooks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -84,7 +96,7 @@ const MyBorrowed = () => {
               <div className="my-borrowed-cover">
                 {record.bookImage ? (
                   <img
-                    src={`http://localhost:8000${record.bookImage}`}
+                    src={getImageUrl(record.bookImage)}
                     alt={record.bookName}
                   />
                 ) : (

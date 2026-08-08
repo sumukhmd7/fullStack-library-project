@@ -11,8 +11,19 @@ const BookCard = ({ book, onBorrowed }) => {
   const getImageUrl = (imagePath, updatedAt) => {
     const API_BASE_URL = "http://localhost:8000";
     if (!imagePath) return "";
+
+    // Full external URLs (e.g. from CSV-imported books using Open Library covers)
+    // should be used as-is. Only locally-uploaded images (relative paths like
+    // /uploads/booksImages/xyz.webp) need the backend host prefixed.
+    const isFullUrl = imagePath.startsWith("http");
+    const baseImage = isFullUrl ? imagePath : `${API_BASE_URL}${imagePath}`;
+
+    // Cache-busting query param only makes sense for locally-served images.
+    // External hosts don't need it, and some may reject/ignore unknown query params.
+    if (isFullUrl) return baseImage;
+
     const version = updatedAt ? new Date(updatedAt).getTime() : imagePath;
-    return `${API_BASE_URL}${imagePath}?v=${encodeURIComponent(version)}`;
+    return `${baseImage}?v=${encodeURIComponent(version)}`;
   };
 
   const handleLike = async () => {
@@ -77,8 +88,9 @@ const BookCard = ({ book, onBorrowed }) => {
             onClick={() => {
               setShowImage(getImageUrl(book.bookImage, book.updatedAt));
             }}
-            src={`http://localhost:8000${book.bookImage}`}
+            src={getImageUrl(book.bookImage, book.updatedAt)}
             alt={book.bookName}
+            loading="lazy"
           />
         </div>
 

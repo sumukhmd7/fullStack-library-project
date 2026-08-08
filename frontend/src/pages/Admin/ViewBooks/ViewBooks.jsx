@@ -3,6 +3,18 @@ import { useState, useEffect } from "react";
 import "./ViewBooks.css";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = "http://localhost:8000";
+
+// Full external URLs (e.g. from CSV-imported books using Open Library covers)
+// should be used as-is. Only locally-uploaded images (relative paths like
+// /uploads/booksImages/xyz.webp) need the backend host prefixed.
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return "";
+  return imagePath.startsWith("http")
+    ? imagePath
+    : `${API_BASE_URL}${imagePath}`;
+};
+
 const ViewBooks = () => {
   const [allBooks, setAllBooks] = useState([]);
   const [search, setSearch] = useState("");
@@ -79,10 +91,7 @@ const ViewBooks = () => {
             {filteredBooks.map((book) => (
               <div className="view-books-book-card" key={book.id}>
                 <div className="view-books-book-image">
-                  <img
-                    src={`http://localhost:8000${book.bookImage}`}
-                    alt={book.bookName}
-                  />
+                  <img src={getImageUrl(book.bookImage)} alt={book.bookName} />
                 </div>
 
                 <div className="view-books-book-details">
