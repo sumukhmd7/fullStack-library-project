@@ -300,6 +300,7 @@ const bookDetails = async (req, res) => {
 const BOOKS_CACHE_KEY = "books:all";
 const CACHE_TTL = 3600;
 
+const t0 = Date.now();
 const getallBooks = async (req, res) => {
   try {
     let allBooks;
@@ -349,6 +350,9 @@ const getallBooks = async (req, res) => {
         })
         .from(books)
         .leftJoin(categories, eq(books.categoryId, categories.id));
+      const t1 = Date.now();
+      console.log(`Drizzle query total: ${t1 - t0}ms`);
+      console.log(`Payload size: ${JSON.stringify(allBooks).length} bytes`);
       fetchTimeMs = Date.now() - dbStart;
       source = "db";
       console.log(
