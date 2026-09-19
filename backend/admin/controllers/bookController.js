@@ -7,7 +7,7 @@ const { users } = require("../../drizzle/schemas/userSchema");
 const { categories } = require("../../drizzle/schemas/categorySchema");
 const { reviews } = require("../../drizzle/schemas/reviewSchema");
 
-const { eq, ilike, and, desc } = require("drizzle-orm");
+const { eq, ilike, and, desc, or, lt } = require("drizzle-orm");
 
 const bookLogger = require("../../utils/bookLogger/bookLogger");
 const userLogger = require("../../utils/userLogger/userLogger");
@@ -300,12 +300,138 @@ const bookDetails = async (req, res) => {
 const BOOKS_CACHE_KEY = "books:all";
 const CACHE_TTL = 3600;
 
-const t0 = Date.now();
+const encodeCursor = (book) => {
+  if (!book || !book.id || !book.createdAt) {
+    return null;
+  }
+
+  const payload = {
+    id: book.id,
+    createdAt:
+      book.createdAt instanceof Date
+        ? book.createdAt.toISOString()
+        : new Date(book.createdAt).toISOString(),
+  };
+
+  return Buffer.from(JSON.stringify(payload)).toString("base64");
+};
+
+const decodeCursor = (cursor) => {
+  if (!cursor) {
+    return null;
+  }
+
+  try {
+    const decoded = JSON.parse(Buffer.from(cursor, "base64").toString("utf8"));
+
+    if (!decoded?.id || !decoded?.createdAt) {
+      return null;
+    }
+
+    return {
+      id: decoded.id,
+      createdAt: new Date(decoded.createdAt),
+    };
+  } catch (error) {
+    console.warn("Invalid books cursor received:", error.message);
+    return null;
+  }
+};
+
 const getallBooks = async (req, res) => {
   try {
+    const limitParam = Number.parseInt(req.query.limit, 10);
+    const requestedLimit = Number.isFinite(limitParam) ? limitParam : 12;
+    const limit = Math.min(Math.max(requestedLimit, 1), 50);
+    const cursor = req.query.cursor || null;
+    const search = (req.query.search || "").trim();
+    const userId = req.user?.userId;
+
+    console.log("📚 getallBooks request:", {
+      hasCursor: Boolean(cursor),
+      cursorPreview: cursor ? `${cursor.slice(0, 40)}...` : null,
+      search: search || null,
+      limit,
+      requestedLimit,
+      userId,
+    });
+
+    if (req.query.cursor || req.query.limit || search) {
+      const decodedCursor = decodeCursor(cursor);
+      console.log("📚 decoded pagination cursor:", decodedCursor);
+      let query = db
+        .select({
+          id: books.id,
+          bookName: books.bookName,
+          bookDescription: books.bookDescription,
+          bookAuthor: books.bookAuthor,
+          categoryId: books.categoryId,
+          categoryName: categories.categoryName,
+          bookImage: books.bookImage,
+          bookStatus: books.bookStatus,
+          bookCost: books.bookCost,
+          bookLikes: books.bookLikes,
+          likeByUsers: books.likeByUsers,
+          bookDislikes: books.bookDislikes,
+          isActive: books.isActive,
+          createdAt: books.createdAt,
+          updatedAt: books.updatedAt,
+        })
+        .from(books)
+        .leftJoin(categories, eq(books.categoryId, categories.id));
+
+      if (search) {
+        query = query.where(ilike(books.bookName, `%${search}%`));
+      }
+
+      if (decodedCursor && !search) {
+        query = query.where(
+          or(
+            lt(books.createdAt, decodedCursor.createdAt),
+            and(
+              eq(books.createdAt, decodedCursor.createdAt),
+              lt(books.id, decodedCursor.id),
+            ),
+          ),
+        );
+      }
+
+      const paginatedBooks = await query
+        .orderBy(desc(books.createdAt), desc(books.id))
+        .limit(limit + 1);
+
+      const hasMore = paginatedBooks.length > limit;
+      const pageItems = paginatedBooks.slice(0, limit);
+      const nextCursor = hasMore
+        ? encodeCursor(pageItems[pageItems.length - 1])
+        : null;
+
+      console.log("📚 pagination result:", {
+        totalFetched: paginatedBooks.length,
+        returned: pageItems.length,
+        hasMore,
+        nextCursorPreview: nextCursor ? `${nextCursor.slice(0, 40)}...` : null,
+        search,
+      });
+
+      const booksWithLikeStatus = pageItems.map((book) => ({
+        ...book,
+        userLiked: userId ? book.likeByUsers?.includes(userId) || false : false,
+      }));
+
+      return res.status(200).send({
+        success: true,
+        hasMore,
+        nextCursor,
+        limit,
+        source: "db",
+        books: booksWithLikeStatus,
+      });
+    }
+
     let allBooks;
     let cached = null;
-    let source = "db"; // will flip to "redis" if cache hit
+    let source = "db";
     let fetchTimeMs = 0;
 
     const redisStart = Date.now();
@@ -350,9 +476,6 @@ const getallBooks = async (req, res) => {
         })
         .from(books)
         .leftJoin(categories, eq(books.categoryId, categories.id));
-      const t1 = Date.now();
-      console.log(`Drizzle query total: ${t1 - t0}ms`);
-      console.log(`Payload size: ${JSON.stringify(allBooks).length} bytes`);
       fetchTimeMs = Date.now() - dbStart;
       source = "db";
       console.log(
@@ -374,7 +497,6 @@ const getallBooks = async (req, res) => {
       }
     }
 
-    const userId = req.user?.userId;
     const booksWithLikeStatus = allBooks.map((book) => ({
       ...book,
       userLiked: userId ? book.likeByUsers?.includes(userId) || false : false,
@@ -383,9 +505,9 @@ const getallBooks = async (req, res) => {
     return res.status(200).send({
       success: true,
       totalBooks: allBooks.length,
-      source, // "redis" or "db"
-      fetchTimeMs, // how long that path took
-      books: allBooks,
+      source,
+      fetchTimeMs,
+      books: booksWithLikeStatus,
     });
   } catch (error) {
     console.log(error.message);

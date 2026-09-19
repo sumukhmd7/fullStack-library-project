@@ -1,36 +1,66 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import axios from "axios";
 import BookCard from "../../components/userComponents/BookCard/BookCard.jsx";
 import "./Browsebooks.css";
 import { useNavigate } from "react-router-dom";
 
+const PAGE_SIZE = 12;
+
 const Browsebooks = () => {
-  const [allBooks, setAllBooks] = useState([]); // fetched once, used by "All"
-  const [displayedBooks, setDisplayedBooks] = useState([]); // what's currently shown
+  const [allBooks, setAllBooks] = useState([]);
+  const [displayedBooks, setDisplayedBooks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
   const [activeCategoryId, setActiveCategoryId] = useState("All");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [nextCursor, setNextCursor] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const loadMoreRef = useRef(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchBooks = async () => {
+  const fetchBooksPage = useCallback(
+    async (cursor = null, append = false, searchText = "") => {
+      if (activeCategoryId !== "All") return;
+
+      setIsLoadingMore(true);
       try {
+        const params = new URLSearchParams({ limit: String(PAGE_SIZE) });
+        if (cursor) params.set("cursor", cursor);
+        if (searchText.trim()) params.set("search", searchText.trim());
+
         const response = await axios.get(
-          "http://localhost:8000/books/getallBooks",
+          `http://localhost:8000/books/getallBooks?${params.toString()}`,
           { withCredentials: true },
         );
-        setAllBooks(response.data.books);
-        setDisplayedBooks(response.data.books); // initially show all
+
+        const pageBooks = response.data.books || [];
+        const newCursor = response.data.nextCursor || null;
+
+        if (append) {
+          setAllBooks((prev) => [...prev, ...pageBooks]);
+          setDisplayedBooks((prev) => [...prev, ...pageBooks]);
+        } else {
+          setAllBooks(pageBooks);
+          setDisplayedBooks(pageBooks);
+        }
+
+        setNextCursor(newCursor);
+        setHasMore(Boolean(response.data.hasMore));
       } catch (error) {
         if (error.response?.status === 401) {
           navigate("/", { replace: true });
         } else {
           console.error("Failed to fetch books:", error);
         }
+      } finally {
+        setIsLoadingMore(false);
       }
-    };
+    },
+    [activeCategoryId, navigate],
+  );
 
+  useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
@@ -43,19 +73,66 @@ const Browsebooks = () => {
       }
     };
 
-    fetchBooks();
     fetchCategories();
-  }, []);
+    fetchBooksPage();
+  }, [fetchBooksPage]);
+
+  useEffect(() => {
+    if (activeCategoryId !== "All") return;
+
+    if (!search.trim()) {
+      setNextCursor(null);
+      setHasMore(true);
+      fetchBooksPage();
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      fetchBooksPage(null, false, search);
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [search, activeCategoryId, fetchBooksPage]);
+
+  useEffect(() => {
+    if (activeCategoryId !== "All") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const firstEntry = entries[0];
+        if (
+          firstEntry?.isIntersecting &&
+          hasMore &&
+          !isLoadingMore &&
+          nextCursor
+        ) {
+          fetchBooksPage(nextCursor, true);
+        }
+      },
+      { rootMargin: "220px" },
+    );
+
+    const currentRef = loadMoreRef.current;
+    if (currentRef) observer.observe(currentRef);
+
+    return () => {
+      if (currentRef) observer.unobserve(currentRef);
+    };
+  }, [activeCategoryId, fetchBooksPage, hasMore, isLoadingMore, nextCursor]);
 
   const handleAllClick = () => {
     setActiveCategoryId("All");
-    setDisplayedBooks(allBooks); // no backend call, just reuse existing data
     setDropdownOpen(false);
+    setNextCursor(null);
+    setHasMore(true);
+    fetchBooksPage();
   };
 
   const handleCategorySelect = async (categoryId) => {
     setActiveCategoryId(categoryId);
     setDropdownOpen(false);
+    setNextCursor(null);
+    setHasMore(false);
     try {
       const response = await axios.get(
         `http://localhost:8000/books/getBooksByCategory/${categoryId}`,
@@ -156,15 +233,27 @@ const Browsebooks = () => {
           <h3>No books found.</h3>
         </div>
       ) : (
-        <div className="view-books-books-grid">
-          {filteredBooks.map((book) => (
-            <BookCard
-              key={book.id}
-              book={book}
-              onBorrowed={handleBookBorrowed}
-            />
-          ))}
-        </div>
+        <>
+          <div className="view-books-books-grid">
+            {filteredBooks.map((book) => (
+              <BookCard
+                key={book.id}
+                book={book}
+                onBorrowed={handleBookBorrowed}
+              />
+            ))}
+          </div>
+
+          {activeCategoryId === "All" && hasMore && (
+            <div ref={loadMoreRef} style={{ height: 1 }} />
+          )}
+
+          {activeCategoryId === "All" && isLoadingMore && (
+            <div className="no-books">
+              <h3>Loading more books...</h3>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

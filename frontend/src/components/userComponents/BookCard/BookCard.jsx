@@ -7,6 +7,11 @@ const BookCard = ({ book, onBorrowed }) => {
   const [likes, setLikes] = useState(book.bookLikes || 0);
   const [liked, setLiked] = useState(book.userLiked || false); // has this user liked it?
   const [loading, setLoading] = useState(false);
+  const [popup, setPopup] = useState({
+    open: false,
+    type: "info",
+    message: "",
+  });
 
   const getImageUrl = (imagePath, updatedAt) => {
     const API_BASE_URL = "http://localhost:8000";
@@ -67,13 +72,24 @@ const BookCard = ({ book, onBorrowed }) => {
         { withCredentials: true },
       );
 
-      alert(response.data.message);
-      onBorrowed(book.id);
+      setPopup({
+        open: true,
+        type: "success",
+        message: response.data.message || "Book borrowed successfully!",
+      });
+      onBorrowed?.(book.id);
     } catch (error) {
+      const errorMessage =
+        error.response?.data?.message || "This book is no longer available.";
+
+      setPopup({
+        open: true,
+        type: "error",
+        message: errorMessage,
+      });
+
       if (error.response?.status === 401) {
-        navigate("/", { replace: true });
-      } else if (error.response?.status === 409) {
-        alert("This book is no longer available.");
+        console.warn("User not authenticated while borrowing book.");
       } else {
         console.error(error);
       }
@@ -147,6 +163,27 @@ const BookCard = ({ book, onBorrowed }) => {
               ×
             </button>
             <img src={showImage} alt="Book" className="popup-image" />
+          </div>
+        </div>
+      )}
+
+      {popup.open && (
+        <div
+          className="book-popup-overlay"
+          onClick={() => setPopup({ ...popup, open: false })}
+        >
+          <div
+            className={`book-popup ${popup.type}`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="book-popup-header">localhost:5173 says</div>
+            <p className="book-popup-message">{popup.message}</p>
+            <button
+              className="book-popup-button"
+              onClick={() => setPopup({ ...popup, open: false })}
+            >
+              OK
+            </button>
           </div>
         </div>
       )}

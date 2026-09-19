@@ -19,6 +19,11 @@ const MyBorrowed = () => {
   const [borrowedBooks, setBorrowedBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [returningId, setReturningId] = useState(null); // tracks which book is mid-return
+  const [popup, setPopup] = useState({
+    open: false,
+    type: "info",
+    message: "",
+  });
   const navigate = useNavigate();
 
   const fetchBorrowedBooks = async () => {
@@ -55,17 +60,27 @@ const MyBorrowed = () => {
       const { fine, daysLate } = response.data.data;
 
       if (fine > 0) {
-        alert(
-          `Please pay a fine of ₹${fine}.\n\nBill details:\n- Days late: ${daysLate}\n- Fine per day: ₹10\n- Total fine: ₹${fine}`,
-        );
+        setPopup({
+          open: true,
+          type: "error",
+          message: `Please pay a fine of ₹${fine}.\n\nBill details:\n- Days late: ${daysLate}\n- Fine per day: ₹10\n- Total fine: ₹${fine}`,
+        });
       } else {
-        alert("Hope you enjoyed reading! Happy reading 📚");
+        setPopup({
+          open: true,
+          type: "success",
+          message: "Hope you enjoyed reading! Happy reading 📚",
+        });
       }
 
-      fetchBorrowedBooks(); // refresh the list after returning
+      fetchBorrowedBooks();
     } catch (error) {
       console.error("Failed to return book:", error);
-      alert("Something went wrong while returning the book.");
+      setPopup({
+        open: true,
+        type: "error",
+        message: "Something went wrong while returning the book.",
+      });
     } finally {
       setReturningId(null);
     }
@@ -142,6 +157,27 @@ const MyBorrowed = () => {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {popup.open && (
+        <div
+          className="borrow-popup-overlay"
+          onClick={() => setPopup({ ...popup, open: false })}
+        >
+          <div
+            className={`borrow-popup ${popup.type}`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="borrow-popup-header">localhost:5173 says</div>
+            <p className="borrow-popup-message">{popup.message}</p>
+            <button
+              className="borrow-popup-button"
+              onClick={() => setPopup({ ...popup, open: false })}
+            >
+              OK
+            </button>
+          </div>
         </div>
       )}
     </div>
