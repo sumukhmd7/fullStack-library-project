@@ -65,4 +65,16 @@ bookRouter.get(
 
 bookRouter.get("/getTopPicks", userAuthentication, bookController.getTopPicks);
 
+bookRouter.get(
+  "/getBookCount",
+  userAuthentication,
+  bookController.getBookCount,
+);
+
+bookRouter.get(
+  "/getCategoryBookCount/:categoryId",
+  userAuthentication,
+  bookController.getCategoryBookCount,
+);
+
 module.exports = bookRouter;

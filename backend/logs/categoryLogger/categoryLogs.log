@@ -1627,3 +1627,391 @@ level info: Sep-19-2026 14:03:25 	All category (cache hit)
 level info: Sep-19-2026 14:09:32 	All category (cache hit)
 level info: Sep-19-2026 14:09:35 	All category (cache hit)
 level info: Sep-19-2026 14:09:37 	All category (cache hit)
+level error: Sep-20-2026 21:57:50 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 21:57:51 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 21:57:51 	All category (cache miss, DB hit)
+level error: Sep-20-2026 21:59:10 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 21:59:13 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 21:59:13 	All category (cache miss, DB hit)
+level error: Sep-20-2026 21:59:18 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 21:59:18 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 21:59:18 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:00:20 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:00:20 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:00:20 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:00:52 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:00:52 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:00:52 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:02:55 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:02:55 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:02:55 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:03:44 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:03:44 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:03:44 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:04:09 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:04:10 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:04:10 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:04:42 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:04:43 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:04:43 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:04:50 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:04:51 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:04:51 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:04:59 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:04:59 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:04:59 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:05:01 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:05:01 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:05:01 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:05:26 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:05:26 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:05:26 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:06:08 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:06:08 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:06:08 	All category (cache miss, DB hit)
+level error: Sep-20-2026 22:09:30 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-20-2026 22:09:30 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-20-2026 22:09:30 	All category (cache miss, DB hit)
+level info: Sep-20-2026 22:23:14 	All category (cache miss, DB hit)
+level info: Sep-20-2026 22:23:29 	All category (cache hit)
+level info: Sep-21-2026 23:20:27 	All category (cache miss, DB hit)
+level info: Sep-21-2026 23:24:43 	All category (cache hit)
+level info: Sep-21-2026 23:28:12 	All category (cache hit)
+level info: Sep-21-2026 23:35:36 	All category (cache hit)
+level info: Sep-21-2026 23:35:40 	All category (cache hit)
+level info: Sep-21-2026 23:35:43 	All category (cache hit)
+level info: Sep-21-2026 23:35:51 	All category (cache hit)
+level info: Sep-21-2026 23:35:54 	All category (cache hit)
+level info: Sep-21-2026 23:36:31 	All category (cache hit)
+level info: Sep-21-2026 23:36:41 	All category (cache hit)
+level info: Sep-21-2026 23:36:43 	All category (cache hit)
+level info: Sep-21-2026 23:37:06 	All category (cache hit)
+level info: Sep-21-2026 23:43:20 	All category (cache hit)
+level info: Sep-21-2026 23:43:27 	All category (cache hit)
+level info: Sep-21-2026 23:49:26 	All category (cache hit)
+level info: Sep-21-2026 23:49:28 	All category (cache hit)
+level info: Sep-21-2026 23:49:44 	All category (cache hit)
+level info: Sep-22-2026 00:10:55 	All category (cache hit)
+level info: Sep-22-2026 00:10:58 	All category (cache hit)
+level info: Sep-22-2026 00:11:07 	All category (cache hit)
+level info: Sep-22-2026 00:12:54 	All category (cache hit)
+level info: Sep-22-2026 00:12:57 	All category (cache hit)
+level info: Sep-22-2026 00:12:58 	All category (cache hit)
+level error: Sep-27-2026 23:09:05 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:09:09 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:09:09 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:09:17 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:09:17 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:09:17 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:09:36 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:09:41 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:09:41 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:09:48 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:09:48 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:09:48 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:09:52 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:09:53 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:09:53 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:26 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:16:28 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:16:28 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:36 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:16:36 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:16:36 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:40 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:16:41 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:16:41 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:45 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:16:45 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:16:45 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:46 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:16:50 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:16:50 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:50 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:16:51 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:16:51 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:55 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:16:55 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:16:55 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:16:56 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:17:00 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:17:00 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:17:00 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:17:01 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:17:01 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:17:04 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:17:05 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:17:05 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:17:09 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:17:11 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:17:11 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:17:22 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:17:35 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:17:35 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:19:41 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:19:42 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:19:42 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:19:46 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:19:46 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:19:46 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:19:50 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:19:51 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:19:51 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:20:25 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:20:30 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:20:30 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:20:30 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:20:31 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:20:31 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:31:17 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:31:31 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:31:31 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:31:32 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:31:40 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:31:40 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:31:40 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:31:40 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:31:40 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:31:40 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:31:40 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:31:40 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:31:41 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:31:41 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:31:41 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:33:49 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:33:54 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:33:54 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:33:55 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:33:56 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:33:56 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:38:30 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:38:35 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:38:35 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:38:41 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:38:42 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:38:42 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:38:57 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:38:58 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:38:58 	All category (cache miss, DB hit)
+level error: Sep-27-2026 23:44:33 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-27-2026 23:44:34 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-27-2026 23:44:34 	All category (cache miss, DB hit)
+level error: Sep-28-2026 00:05:19 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 00:05:24 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 00:05:24 	All category (cache miss, DB hit)
+level error: Sep-28-2026 00:12:51 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 00:12:56 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 00:12:56 	All category (cache miss, DB hit)
+level error: Sep-28-2026 00:13:17 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 00:13:20 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 00:13:20 	All category (cache miss, DB hit)
+level error: Sep-28-2026 00:17:47 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 00:17:53 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 00:17:53 	All category (cache miss, DB hit)
+level error: Sep-28-2026 00:21:43 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 00:21:44 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 00:21:44 	All category (cache miss, DB hit)
+level error: Sep-28-2026 00:21:54 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 00:21:59 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 00:21:59 	All category (cache miss, DB hit)
+level error: Sep-28-2026 00:22:08 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 00:22:09 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 00:22:09 	All category (cache miss, DB hit)
+level error: Sep-28-2026 12:53:38 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 12:53:43 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 12:53:43 	All category (cache miss, DB hit)
+level error: Sep-28-2026 12:55:52 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 12:55:53 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 12:55:53 	All category (cache miss, DB hit)
+level error: Sep-28-2026 12:56:09 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 12:56:11 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 12:56:11 	All category (cache miss, DB hit)
+level info: Sep-28-2026 12:58:59 	All category (cache miss, DB hit)
+level info: Sep-28-2026 12:59:23 	All category (cache hit)
+level info: Sep-28-2026 13:20:24 	All category (cache hit)
+level info: Sep-28-2026 13:23:05 	All category (cache hit)
+level info: Sep-28-2026 13:33:45 	All category (cache hit)
+level info: Sep-28-2026 13:33:58 	All category (cache hit)
+level info: Sep-28-2026 13:37:58 	All category (cache hit)
+level info: Sep-28-2026 13:38:04 	All category (cache hit)
+level info: Sep-28-2026 13:38:07 	All category (cache hit)
+level info: Sep-28-2026 13:38:36 	All category (cache hit)
+level info: Sep-28-2026 13:38:46 	All category (cache hit)
+level info: Sep-28-2026 13:38:55 	All category (cache hit)
+level info: Sep-28-2026 13:50:32 	All category (cache hit)
+level info: Sep-28-2026 13:50:35 	All category (cache hit)
+level info: Sep-28-2026 13:50:44 	All category (cache hit)
+level info: Sep-28-2026 13:50:47 	All category (cache hit)
+level info: Sep-28-2026 13:51:30 	All category (cache hit)
+level info: Sep-28-2026 13:52:06 	All category (cache hit)
+level info: Sep-28-2026 13:59:15 	All category (cache miss, DB hit)
+level info: Sep-28-2026 14:00:07 	All category (cache hit)
+level info: Sep-28-2026 14:03:01 	All category (cache hit)
+level info: Sep-28-2026 14:03:05 	All category (cache hit)
+level info: Sep-28-2026 14:03:56 	All category (cache hit)
+level info: Sep-28-2026 14:04:01 	All category (cache hit)
+level info: Sep-28-2026 14:04:05 	All category (cache hit)
+level info: Sep-28-2026 14:04:06 	All category (cache hit)
+level info: Sep-28-2026 14:04:22 	All category (cache hit)
+level info: Sep-28-2026 14:05:32 	All category (cache hit)
+level info: Sep-28-2026 14:30:56 	All category (cache hit)
+level info: Sep-28-2026 14:31:21 	All category (cache hit)
+level info: Sep-28-2026 14:31:41 	All category (cache hit)
+level info: Sep-28-2026 14:39:57 	All category (cache hit)
+level info: Sep-28-2026 14:52:20 	All category (cache hit)
+level info: Sep-28-2026 14:52:25 	All category (cache hit)
+level info: Sep-28-2026 14:52:31 	All category (cache hit)
+level info: Sep-28-2026 14:52:34 	All category (cache hit)
+level info: Sep-28-2026 14:52:40 	All category (cache hit)
+level info: Sep-28-2026 14:52:41 	All category (cache hit)
+level info: Sep-28-2026 14:56:39 	All category (cache hit)
+level info: Sep-28-2026 14:57:14 	All category (cache hit)
+level info: Sep-28-2026 15:17:42 	All category (cache miss, DB hit)
+level info: Sep-28-2026 15:17:58 	All category (cache hit)
+level info: Sep-28-2026 15:18:18 	All category (cache hit)
+level info: Sep-28-2026 15:18:21 	All category (cache hit)
+level info: Sep-28-2026 15:18:26 	All category (cache hit)
+level info: Sep-28-2026 15:18:28 	All category (cache hit)
+level info: Sep-28-2026 15:21:03 	All category (cache hit)
+level info: Sep-28-2026 15:23:52 	All category (cache hit)
+level info: Sep-28-2026 15:31:37 	All category (cache hit)
+level info: Sep-28-2026 15:33:22 	All category (cache hit)
+level info: Sep-28-2026 15:33:33 	All category (cache hit)
+level info: Sep-28-2026 15:33:35 	All category (cache hit)
+level info: Sep-28-2026 15:37:45 	All category (cache hit)
+level info: Sep-28-2026 15:42:22 	All category (cache hit)
+level info: Sep-28-2026 15:50:44 	All category (cache hit)
+level info: Sep-28-2026 15:50:58 	All category (cache hit)
+level info: Sep-28-2026 15:53:54 	All category (cache hit)
+level info: Sep-28-2026 15:54:07 	All category (cache hit)
+level info: Sep-28-2026 15:54:12 	All category (cache hit)
+level info: Sep-28-2026 15:54:41 	All category (cache hit)
+level info: Sep-28-2026 15:54:48 	All category (cache hit)
+level info: Sep-28-2026 15:56:05 	All category (cache hit)
+level info: Sep-28-2026 15:56:10 	All category (cache hit)
+level info: Sep-28-2026 15:56:21 	All category (cache hit)
+level info: Sep-28-2026 16:05:03 	All category (cache hit)
+level info: Sep-28-2026 16:05:06 	All category (cache hit)
+level info: Sep-28-2026 16:05:13 	All category (cache hit)
+level info: Sep-28-2026 16:05:19 	All category (cache hit)
+level info: Sep-28-2026 16:05:21 	All category (cache hit)
+level info: Sep-28-2026 16:05:22 	All category (cache hit)
+level info: Sep-28-2026 16:05:24 	All category (cache hit)
+level info: Sep-28-2026 16:05:26 	All category (cache hit)
+level info: Sep-28-2026 16:05:28 	All category (cache hit)
+level info: Sep-28-2026 16:05:31 	All category (cache hit)
+level info: Sep-28-2026 16:19:47 	All category (cache miss, DB hit)
+level info: Sep-28-2026 16:19:48 	All category (cache hit)
+level info: Sep-28-2026 16:20:01 	All category (cache hit)
+level info: Sep-28-2026 16:20:05 	All category (cache hit)
+level info: Sep-28-2026 16:20:08 	All category (cache hit)
+level info: Sep-28-2026 16:20:10 	All category (cache hit)
+level info: Sep-28-2026 16:20:15 	All category (cache hit)
+level info: Sep-28-2026 16:20:45 	All category (cache hit)
+level info: Sep-28-2026 16:20:47 	All category (cache hit)
+level info: Sep-28-2026 16:20:49 	All category (cache hit)
+level info: Sep-28-2026 16:25:36 	All category (cache hit)
+level info: Sep-28-2026 16:25:39 	All category (cache hit)
+level info: Sep-28-2026 16:25:41 	All category (cache hit)
+level info: Sep-28-2026 16:25:47 	All category (cache hit)
+level info: Sep-28-2026 16:25:52 	All category (cache hit)
+level info: Sep-28-2026 16:26:13 	All category (cache hit)
+level info: Sep-28-2026 18:29:17 	All category (cache miss, DB hit)
+level info: Sep-28-2026 18:29:20 	All category (cache hit)
+level info: Sep-28-2026 18:29:22 	All category (cache hit)
+level info: Sep-28-2026 18:29:28 	All category (cache hit)
+level info: Sep-28-2026 18:29:43 	All category (cache hit)
+level info: Sep-28-2026 18:29:55 	All category (cache hit)
+level info: Sep-28-2026 18:30:19 	All category (cache hit)
+level info: Sep-28-2026 18:31:37 	All category (cache hit)
+level info: Sep-28-2026 18:37:24 	All category (cache hit)
+level info: Sep-28-2026 18:40:25 	All category (cache hit)
+level info: Sep-28-2026 18:50:24 	All category (cache hit)
+level info: Sep-28-2026 18:51:36 	All category (cache hit)
+level info: Sep-28-2026 19:20:12 	All category (cache hit)
+level info: Sep-28-2026 19:20:49 	All category (cache hit)
+level info: Sep-28-2026 19:20:56 	All category (cache hit)
+level error: Sep-28-2026 20:01:08 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:01:12 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:01:12 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:01:32 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:01:36 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:01:36 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:02:32 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:02:36 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:02:36 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:02:49 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:02:49 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:02:49 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:27:59 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:28:04 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:28:04 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:40:01 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:40:18 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:40:18 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:40:18 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:40:18 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:40:18 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:40:44 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:40:48 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:40:48 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:40:54 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:40:54 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:40:54 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:40:58 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:40:59 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:40:59 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:41:03 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:41:04 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:41:04 	All category (cache miss, DB hit)
+level error: Sep-28-2026 20:41:07 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 20:41:08 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 20:41:08 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:04:46 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:04:47 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:04:47 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:06:50 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:06:50 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:06:50 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:07:07 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:07:08 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:07:08 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:07:16 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:07:16 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:07:16 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:10:20 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:10:20 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:10:20 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:10:23 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:10:23 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:10:23 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:10:51 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:10:52 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:10:52 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:10:53 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:10:53 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:10:53 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:11:13 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:11:14 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:11:14 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:11:21 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:11:21 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:11:21 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:11:22 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:11:22 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:11:22 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:11:23 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:11:24 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:11:24 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:11:28 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:11:29 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:11:29 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:11:31 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:11:31 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:11:31 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:13:43 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:13:44 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:13:44 	All category (cache miss, DB hit)
+level error: Sep-28-2026 21:28:53 	⚠️ Redis GET failed, falling back to DB: Stream isn't writeable and enableOfflineQueue options is false
+level error: Sep-28-2026 21:28:54 	⚠️ Redis SET failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-28-2026 21:28:54 	All category (cache miss, DB hit)

@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import axios from "axios";
 import BookCard from "../../components/userComponents/BookCard/BookCard.jsx";
 import "./Browsebooks.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const PAGE_SIZE = 12;
 
@@ -11,7 +11,6 @@ const Browsebooks = () => {
   const [displayedBooks, setDisplayedBooks] = useState([]);
   const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
-  const [activeCategoryId, setActiveCategoryId] = useState("All");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [nextCursor, setNextCursor] = useState(null);
   const [hasMore, setHasMore] = useState(true);
@@ -19,23 +18,33 @@ const Browsebooks = () => {
   const loadMoreRef = useRef(null);
   const navigate = useNavigate();
 
+  // The URL decides the active category:
+  //   /books              -> "All"
+  //   /books?category=3   -> category 3
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategoryId = searchParams.get("category") || "All";
+
+  // Fetches ONE page of books (12). Works for "All" and for a category.
   const fetchBooksPage = useCallback(
     async (cursor = null, append = false, searchText = "") => {
-      if (activeCategoryId !== "All") return;
-
       setIsLoadingMore(true);
       try {
         const params = new URLSearchParams({ limit: String(PAGE_SIZE) });
         if (cursor) params.set("cursor", cursor);
         if (searchText.trim()) params.set("search", searchText.trim());
 
-        const response = await axios.get(
-          `http://localhost:8000/books/getallBooks?${params.toString()}`,
-          { withCredentials: true },
-        );
+        // "All" -> getallBooks, a category -> getBooksByCategory
+        // Both return { books, hasMore, nextCursor }
+        const url =
+          activeCategoryId === "All"
+            ? "http://localhost:8000/books/getallBooks"
+            : `http://localhost:8000/books/getBooksByCategory/${activeCategoryId}`;
+
+        const response = await axios.get(`${url}?${params.toString()}`, {
+          withCredentials: true,
+        });
 
         const pageBooks = response.data.books || [];
-        const newCursor = response.data.nextCursor || null;
 
         if (append) {
           setAllBooks((prev) => [...prev, ...pageBooks]);
@@ -45,7 +54,7 @@ const Browsebooks = () => {
           setDisplayedBooks(pageBooks);
         }
 
-        setNextCursor(newCursor);
+        setNextCursor(response.data.nextCursor || null);
         setHasMore(Boolean(response.data.hasMore));
       } catch (error) {
         if (error.response?.status === 401) {
@@ -60,6 +69,7 @@ const Browsebooks = () => {
     [activeCategoryId, navigate],
   );
 
+  // 1. Categories: load once
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -74,39 +84,33 @@ const Browsebooks = () => {
     };
 
     fetchCategories();
-    fetchBooksPage();
-  }, [fetchBooksPage]);
+  }, []);
 
+  // 2. First page: reload when the category or the search text changes
   useEffect(() => {
-    if (activeCategoryId !== "All") return;
-
-    if (!search.trim()) {
-      setNextCursor(null);
-      setHasMore(true);
-      fetchBooksPage();
-      return;
-    }
-
-    const timeoutId = setTimeout(() => {
-      fetchBooksPage(null, false, search);
-    }, 300);
+    const timeoutId = setTimeout(
+      () => {
+        setNextCursor(null);
+        setHasMore(true);
+        fetchBooksPage(null, false, search);
+      },
+      search.trim() ? 300 : 0,
+    );
 
     return () => clearTimeout(timeoutId);
-  }, [search, activeCategoryId, fetchBooksPage]);
+  }, [search, fetchBooksPage]);
 
+  // 3. Infinite scroll: load the next 12 when the bottom is near
   useEffect(() => {
-    if (activeCategoryId !== "All") return;
-
     const observer = new IntersectionObserver(
       (entries) => {
-        const firstEntry = entries[0];
         if (
-          firstEntry?.isIntersecting &&
+          entries[0]?.isIntersecting &&
           hasMore &&
           !isLoadingMore &&
           nextCursor
         ) {
-          fetchBooksPage(nextCursor, true);
+          fetchBooksPage(nextCursor, true, search);
         }
       },
       { rootMargin: "220px" },
@@ -118,42 +122,23 @@ const Browsebooks = () => {
     return () => {
       if (currentRef) observer.unobserve(currentRef);
     };
-  }, [activeCategoryId, fetchBooksPage, hasMore, isLoadingMore, nextCursor]);
+  }, [fetchBooksPage, hasMore, isLoadingMore, nextCursor, search]);
 
   const handleAllClick = () => {
-    setActiveCategoryId("All");
+    setSearchParams({}); // removes ?category=
     setDropdownOpen(false);
-    setNextCursor(null);
-    setHasMore(true);
-    fetchBooksPage();
   };
 
-  const handleCategorySelect = async (categoryId) => {
-    setActiveCategoryId(categoryId);
+  const handleCategorySelect = (categoryId) => {
+    setSearchParams({ category: String(categoryId) });
     setDropdownOpen(false);
-    setNextCursor(null);
-    setHasMore(false);
-    try {
-      const response = await axios.get(
-        `http://localhost:8000/books/getBooksByCategory/${categoryId}`,
-        { withCredentials: true },
-      );
-      setDisplayedBooks(response.data.books);
-    } catch (error) {
-      console.error("Failed to fetch books by category:", error);
-    }
   };
-
-  // Search always filters whatever is currently displayed
-  const filteredBooks = displayedBooks.filter((book) =>
-    book.bookName.toLowerCase().includes(search.toLowerCase()),
-  );
 
   const activeCategoryName =
     activeCategoryId === "All"
       ? "All"
-      : categories.find((c) => c.id === activeCategoryId)?.categoryName ||
-        "All";
+      : categories.find((c) => String(c.id) === String(activeCategoryId))
+          ?.categoryName || "All";
 
   const handleBookBorrowed = (bookId) => {
     const updateStatus = (books) =>
@@ -228,14 +213,14 @@ const Browsebooks = () => {
         </div>
       </div>
 
-      {filteredBooks.length === 0 ? (
+      {displayedBooks.length === 0 && !isLoadingMore ? (
         <div className="no-books">
           <h3>No books found.</h3>
         </div>
       ) : (
         <>
           <div className="view-books-books-grid">
-            {filteredBooks.map((book) => (
+            {displayedBooks.map((book) => (
               <BookCard
                 key={book.id}
                 book={book}
@@ -244,11 +229,9 @@ const Browsebooks = () => {
             ))}
           </div>
 
-          {activeCategoryId === "All" && hasMore && (
-            <div ref={loadMoreRef} style={{ height: 1 }} />
-          )}
+          {hasMore && <div ref={loadMoreRef} style={{ height: 1 }} />}
 
-          {activeCategoryId === "All" && isLoadingMore && (
+          {isLoadingMore && (
             <div className="no-books">
               <h3>Loading more books...</h3>
             </div>

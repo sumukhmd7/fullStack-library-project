@@ -7,7 +7,7 @@ const { users } = require("../../drizzle/schemas/userSchema");
 const { categories } = require("../../drizzle/schemas/categorySchema");
 const { reviews } = require("../../drizzle/schemas/reviewSchema");
 
-const { eq, ilike, and, desc, or, lt } = require("drizzle-orm");
+const { eq, ilike, and, asc, desc, or, gt, count } = require("drizzle-orm");
 
 const bookLogger = require("../../utils/bookLogger/bookLogger");
 const userLogger = require("../../utils/userLogger/userLogger");
@@ -387,17 +387,17 @@ const getallBooks = async (req, res) => {
       if (decodedCursor && !search) {
         query = query.where(
           or(
-            lt(books.createdAt, decodedCursor.createdAt),
+            gt(books.createdAt, decodedCursor.createdAt),
             and(
               eq(books.createdAt, decodedCursor.createdAt),
-              lt(books.id, decodedCursor.id),
+              gt(books.id, decodedCursor.id),
             ),
           ),
         );
       }
 
       const paginatedBooks = await query
-        .orderBy(desc(books.createdAt), desc(books.id))
+        .orderBy(asc(books.createdAt), asc(books.id))
         .limit(limit + 1);
 
       const hasMore = paginatedBooks.length > limit;
@@ -717,11 +717,26 @@ const toggleLikeBook = async (req, res) => {
 // };
 
 // controller
+
 const getBooksByCategory = async (req, res) => {
   const { categoryId } = req.params;
+  const limitParam = Number.parseInt(req.query.limit, 10);
+  // no limit sent = old behaviour, so nothing else breaks
+  const limit = Number.isFinite(limitParam)
+    ? Math.min(Math.max(limitParam, 1), 50)
+    : null;
+  const cursor = req.query.cursor || null;
+  const search = (req.query.search || "").trim();
 
   try {
-    const result = await db
+    const conditions = [
+      eq(books.categoryId, categoryId),
+      eq(books.isActive, true),
+    ];
+    if (search) conditions.push(ilike(books.bookName, `%${search}%`));
+    if (cursor) conditions.push(gt(books.id, cursor));
+
+    let query = db
       .select({
         id: books.id,
         bookName: books.bookName,
@@ -735,12 +750,24 @@ const getBooksByCategory = async (req, res) => {
       })
       .from(books)
       .innerJoin(categories, eq(books.categoryId, categories.id))
-      .where(and(eq(books.categoryId, categoryId), eq(books.isActive, true)));
+      .where(and(...conditions))
+      .orderBy(asc(books.id));
+
+    // fetch one extra row just to know if another page exists
+    if (limit) query = query.limit(limit + 1);
+
+    const rows = await query;
+
+    const hasMore = limit ? rows.length > limit : false;
+    const pageItems = limit ? rows.slice(0, limit) : rows;
+    const nextCursor = hasMore ? pageItems[pageItems.length - 1].id : null;
 
     res.status(200).send({
       success: true,
       message: "Book search data found!",
-      books: result,
+      books: pageItems,
+      hasMore,
+      nextCursor,
     });
   } catch (error) {
     console.error(error);
@@ -810,6 +837,45 @@ const getTopPicks = async (req, res) => {
   }
 };
 
+const getBookCount = async (req, res) => {
+  try {
+    const result = await db.select({ count: count(books.id) }).from(books);
+    res.status(200).send({
+      success: true,
+      count: result[0].count,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      success: false,
+      message: "Error fetching book count",
+      error: error.message,
+    });
+  }
+};
+
+const getCategoryBookCount = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+    const result = await db
+      .select({ count: count(books.id) })
+      .from(books)
+      .where(and(eq(books.categoryId, categoryId)));
+
+    res.status(200).send({
+      success: true,
+      count: result[0].count,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({
+      success: false,
+      message: "Error fetching category book count",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   addBook,
   editBook,
@@ -824,4 +890,6 @@ module.exports = {
   getBooksByCategory,
   toggleLikeBook,
   getTopPicks,
+  getBookCount,
+  getCategoryBookCount,
 };

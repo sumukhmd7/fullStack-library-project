@@ -42,4 +42,10 @@ adminRouter.get(
 
 adminRouter.post("/logout", adminController.logoutadmin);
 
+adminRouter.delete(
+  "/deleteUser/:userId",
+  userAuthentication,
+  adminController.deleteUser,
+);
+
 module.exports = adminRouter;

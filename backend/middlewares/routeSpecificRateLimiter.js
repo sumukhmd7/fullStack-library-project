@@ -3,21 +3,21 @@ const createRateLimiter = require("./rateLimiter");
 // Global limiter (all routes)
 const globalLimiter = createRateLimiter({
   windowMs: 15 * 60 * 1000,
-  max: 300,
+  max: 1000,
   message: "Too many requests. Please try again later.",
 });
 
 // Login
 const loginLimiter = createRateLimiter({
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: 500,
   message: "Too many login attempts. Try again after 15 minutes.",
 });
 
 // Signup
 const signupLimiter = createRateLimiter({
   windowMs: 60 * 60 * 1000,
-  max: 3,
+  max: 5,
   message: "Too many signup attempts.",
 });
 

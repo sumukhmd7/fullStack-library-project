@@ -3,138 +3,37 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../../context/AuthContext";
 import axios from "axios";
 import "./Homepage.css";
-import Browsebooks from "../../Books/Browsebooks.jsx";
-// Placeholder catalog data — swap these for real calls to your
-// GET /book/getallBooks and GET /user/dashboard endpoints.
-// const TOP_PICKS = [
-//   {
-//     id: 1,
-//     bookName: "The Quiet Order",
-//     bookAuthor: "N. Farrow",
-//     bookLikes: 128,
-//   },
-//   {
-//     id: 2,
-//     bookName: "Signal & Noise",
-//     bookAuthor: "R. Achebe",
-//     bookLikes: 104,
-//   },
-//   { id: 3, bookName: "Empire of Ink", bookAuthor: "C. Voss", bookLikes: 97 },
-//   { id: 4, bookName: "Grid Systems", bookAuthor: "M. Lund", bookLikes: 88 },
-// ];
 
-// const CATALOG = [
-//   {
-//     id: 5,
-//     bookName: "The Quiet Order",
-//     bookAuthor: "N. Farrow",
-//     bookCategory: "Fiction",
-//     bookCost: 12,
-//     bookStatus: "available",
-//   },
-//   {
-//     id: 6,
-//     bookName: "Signal & Noise",
-//     bookAuthor: "R. Achebe",
-//     bookCategory: "Sci-Fi",
-//     bookCost: 15,
-//     bookStatus: "not available",
-//   },
-//   {
-//     id: 7,
-//     bookName: "Empire of Ink",
-//     bookAuthor: "C. Voss",
-//     bookCategory: "History",
-//     bookCost: 18,
-//     bookStatus: "available",
-//   },
-//   {
-//     id: 8,
-//     bookName: "Grid Systems",
-//     bookAuthor: "M. Lund",
-//     bookCategory: "Design",
-//     bookCost: 22,
-//     bookStatus: "available",
-//   },
-//   {
-//     id: 9,
-//     bookName: "Field Notes",
-//     bookAuthor: "A. Okoro",
-//     bookCategory: "Biography",
-//     bookCost: 14,
-//     bookStatus: "not available",
-//   },
-//   {
-//     id: 10,
-//     bookName: "Low Tide",
-//     bookAuthor: "S. Marchetti",
-//     bookCategory: "Fiction",
-//     bookCost: 11,
-//     bookStatus: "available",
-//   },
-// ];
-
-// const CATEGORIES = [
-//   "All",
-//   "Fiction",
-//   "Sci-Fi",
-//   "History",
-//   "Design",
-//   "Biography",
-// ];
+const BOOKS_PER_PAGE = 8;
 
 const Homepage = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [query, setQuery] = useState("");
+  // "All" or a category id (number)
   const [activeCategory, setActiveCategory] = useState("All");
   const [catalog, setCatalog] = useState([]);
   const [categories, setCategories] = useState([]);
-
-  const [currentPage, setCurrentPage] = useState(0);
-
-  const [categoryID, setCategoryID] = useState(null);
-
   const [topPicks, setTopPicks] = useState([]);
-
   const [borrowedBooks, setBorrowedBooks] = useState([]);
+  const [bookCount, setBookCount] = useState(0);
+  const [categoryCount, setCategoryCount] = useState(0);
 
-  const BOOKS_PER_PAGE = 8;
-
+  // 1. Runs ONCE: data that doesn't depend on search or category
   useEffect(() => {
-    setCurrentPage(0);
-
-    const fetchBooks = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8000/books/getallBooks",
-          { withCredentials: true },
-        );
-        // setAllBooks(response.data.books);
-        setCatalog(response.data.books); // initially show all
-      } catch (error) {
-        if (error.response?.status === 401) {
-          navigate("/", { replace: true });
-        } else {
-          console.error("Failed to fetch books:", error);
-        }
-      }
-    };
-
     const fetchTopPicks = async () => {
       try {
         const response = await axios.get(
           "http://localhost:8000/books/getTopPicks",
           { withCredentials: true },
         );
-
         setTopPicks(response.data.topPicks);
       } catch (error) {
         if (error.response?.status === 401) {
           navigate("/", { replace: true });
         } else {
-          console.error("Failed to fetch books:", error);
+          console.error("Failed to fetch top picks:", error);
         }
       }
     };
@@ -167,11 +66,81 @@ const Homepage = () => {
       }
     };
 
-    fetchBooks();
-    fetchCategories();
+    const fetchBookCount = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/books/getBookCount",
+          { withCredentials: true },
+        );
+        setBookCount(response.data.count);
+      } catch (error) {
+        console.error("Failed to fetch book count:", error);
+      }
+    };
+
     fetchTopPicks();
     fetchBorrowedBooks();
+    fetchCategories();
+    fetchBookCount();
+  }, []);
+
+  // 2. Runs when search or category changes: fetch only 8 books
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        let response;
+
+        if (activeCategory === "All") {
+          const params = { limit: BOOKS_PER_PAGE };
+          if (query.trim()) params.search = query.trim();
+
+          response = await axios.get(
+            "http://localhost:8000/books/getallBooks",
+            {
+              params,
+              withCredentials: true,
+            },
+          );
+        } else {
+          response = await axios.get(
+            `http://localhost:8000/books/getBooksByCategory/${activeCategory}`,
+            { params: { limit: BOOKS_PER_PAGE }, withCredentials: true },
+          );
+        }
+
+        setCatalog(response.data.books);
+      } catch (error) {
+        if (error.response?.status === 401) {
+          navigate("/", { replace: true });
+        } else {
+          console.error("Failed to fetch books:", error);
+        }
+      }
+    };
+
+    // small delay so typing doesn't fire a request on every keystroke
+    const timeoutId = setTimeout(fetchBooks, 300);
+    return () => clearTimeout(timeoutId);
   }, [query, activeCategory]);
+
+  // 3. Runs when the category changes: total books in that category
+  useEffect(() => {
+    if (activeCategory === "All") return;
+
+    const fetchCategoryCount = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/books/getCategoryBookCount/${activeCategory}`,
+          { withCredentials: true },
+        );
+        setCategoryCount(response.data.count);
+      } catch (error) {
+        console.error("Failed to fetch category count:", error);
+      }
+    };
+
+    fetchCategoryCount();
+  }, [activeCategory]);
 
   const handlelogout = async () => {
     try {
@@ -187,37 +156,8 @@ const Homepage = () => {
     }
   };
 
-  const handleCategorySelect = async (categoryId) => {
-    // setCategoryID(categoryId);
-    // setDropdownOpen(false);
-    try {
-      const response = await axios.get(
-        `http://localhost:8000/books/getBooksByCategory/${categoryId}`,
-        { withCredentials: true },
-      );
-      setCatalog(response.data.books);
-    } catch (error) {
-      console.error("Failed to fetch books by category:", error);
-    }
-  };
-
-  const filteredCatalog = catalog.filter((b) => {
-    const matchesCategory =
-      activeCategory === "All" || b.categoryName === activeCategory;
-    const matchesQuery = b.bookName.toLowerCase().includes(query.toLowerCase());
-    return matchesCategory && matchesQuery;
-  });
-
-  if (categories === null || catalog === null) {
-    return <div className="homepage-loading">Loading...</div>;
-  }
-
-  const totalPages = Math.ceil(filteredCatalog.length / BOOKS_PER_PAGE);
-
-  const paginatedCatalog = filteredCatalog.slice(
-    currentPage * BOOKS_PER_PAGE,
-    currentPage * BOOKS_PER_PAGE + BOOKS_PER_PAGE,
-  );
+  const showAllLink =
+    activeCategory === "All" ? "/books" : `/books?category=${activeCategory}`;
 
   return (
     <div className="homepage">
@@ -270,21 +210,16 @@ const Homepage = () => {
           <div className="sidebar-categories">
             <p className="sidebar-heading">Categories</p>
             <button
-              className="sidebar-category"
-              onClick={() => {
-                setActiveCategory("All");
-              }}
+              className={`sidebar-category ${activeCategory === "All" ? "active" : ""}`}
+              onClick={() => setActiveCategory("All")}
             >
               All
             </button>
             {categories.map((cat) => (
               <button
                 key={cat.id}
-                className={`sidebar-category ${activeCategory === cat ? "active" : ""}`}
-                onClick={() => {
-                  setActiveCategory(cat.categoryName);
-                  // handleCategorySelect(cat.id);
-                }}
+                className={`sidebar-category ${activeCategory === cat.id ? "active" : ""}`}
+                onClick={() => setActiveCategory(cat.id)}
               >
                 {cat.categoryName}
               </button>
@@ -315,7 +250,7 @@ const Homepage = () => {
                 <p className="welcome-stat-label">Reviews</p>
               </div>
               <div>
-                <p className="welcome-stat-number">{catalog.length}</p>
+                <p className="welcome-stat-number">{bookCount}</p>
                 <p className="welcome-stat-label">Catalog size</p>
               </div>
             </div>
@@ -345,17 +280,18 @@ const Homepage = () => {
             <div className="section-header">
               <h2>Browse the catalog</h2>
               <span className="catalog-count">
-                {filteredCatalog.length} results
+                {activeCategory === "All" ? bookCount : categoryCount} books
               </span>
+              <Link to={showAllLink}>Show all</Link>
             </div>
 
             <div className="catalog-grid">
-              {paginatedCatalog.map((book) => (
+              {catalog.map((book) => (
                 <div key={book.id} className="catalog-card">
                   <div className="pick-cover">{book.bookName.charAt(0)}</div>
                   <p className="pick-name">{book.bookName}</p>
                   <p className="pick-author">{book.bookAuthor}</p>
-                  <p className="catalog-category">{book.bookCategory}</p>
+                  <p className="catalog-category">{book.categoryName}</p>
 
                   <div className="catalog-footer">
                     <span
@@ -371,32 +307,12 @@ const Homepage = () => {
                     </span>
                     <span className="catalog-price">₹{book.bookCost}</span>
                   </div>
-
-                  {/* <button
-                    className="borrow-button"
-                    disabled={book.bookStatus !== "available"}
-                  >
-                    {book.bookStatus === "available" ? "Borrow" : "Unavailable"}
-                  </button> */}
                 </div>
               ))}
             </div>
 
-            {filteredCatalog.length === 0 && (
+            {catalog.length === 0 && (
               <p className="catalog-empty">No books match that search.</p>
-            )}
-
-            {totalPages > 1 && (
-              <div className="catalog-pagination">
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i}
-                    className={`catalog-dot ${currentPage === i ? "active" : ""}`}
-                    onClick={() => setCurrentPage(i)}
-                    aria-label={`Go to page ${i + 1}`}
-                  />
-                ))}
-              </div>
             )}
           </section>
         </main>

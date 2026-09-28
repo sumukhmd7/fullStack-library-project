@@ -185,6 +185,23 @@ const logoutadmin = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    await db.delete(users).where(eq(users.id, userId));
+    return res.status(200).json({
+      success: true,
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Error deleting user",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   adminDashBoard,
   viewUsers,
@@ -192,4 +209,5 @@ module.exports = {
   borrowBooksList,
   logoutadmin,
   availableBooksList,
+  deleteUser,
 };

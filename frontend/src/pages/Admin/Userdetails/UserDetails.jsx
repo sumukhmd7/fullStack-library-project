@@ -38,9 +38,9 @@ const UserDetails = () => {
           },
         );
 
-        alert(response);
+        alert(response.message);
         setDelPopup(false);
-        navigate("/viewUsers");
+        navigate("/ManageUsers");
       } catch (error) {
         console.log(error);
         console.log(error.response?.data);
