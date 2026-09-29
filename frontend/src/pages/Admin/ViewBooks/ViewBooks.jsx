@@ -1,9 +1,10 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "./ViewBooks.css";
 import { useNavigate } from "react-router-dom";
 
 const API_BASE_URL = "http://localhost:8000";
+const PAGE_SIZE = 12; // books loaded per batch (backend allows up to 50)
 
 // Full external URLs (e.g. from CSV-imported books using Open Library covers)
 // should be used as-is. Only locally-uploaded images (relative paths like
@@ -17,40 +18,93 @@ const getImageUrl = (imagePath) => {
 
 const ViewBooks = () => {
   const [allBooks, setAllBooks] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(""); // what the user is typing
+  const [debouncedSearch, setDebouncedSearch] = useState(""); // what we send to the backend
+
+  const [nextCursor, setNextCursor] = useState(null);
+  const [hasMore, setHasMore] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Invisible marker at the bottom of the grid. When it scrolls into view,
+  // we load the next batch.
+  const loadMoreRef = useRef(null);
+
+  // Drops responses from outdated requests (fast typing, or scrolling
+  // while a new search is loading)
+  const latestRequestRef = useRef(0);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getAllBooks = async () => {
+  // Fetches ONE batch of books.
+  // No cursor  -> first page (replaces the list)
+  // With cursor -> next page (added to the end of the list)
+  const fetchBooks = useCallback(
+    async ({ cursor = null, searchText = "" } = {}) => {
+      const requestId = ++latestRequestRef.current;
+      setIsLoading(true);
+
       try {
-        const response = await axios.get(
-          "http://localhost:8000/books/getallBooks",
-          { withCredentials: true },
+        const response = await axios.get(`${API_BASE_URL}/books/getallBooks`, {
+          params: {
+            limit: PAGE_SIZE,
+            ...(cursor && { cursor }),
+            ...(searchText && { search: searchText }),
+          },
+          withCredentials: true,
+        });
+
+        // A newer request has started since this one, so ignore this response
+        if (requestId !== latestRequestRef.current) return;
+
+        const pageBooks = response.data.books || [];
+
+        setAllBooks((previousBooks) =>
+          cursor ? [...previousBooks, ...pageBooks] : pageBooks,
         );
-
-        console.log(response.data.books);
-
-        setAllBooks(response.data.books);
+        setHasMore(Boolean(response.data.hasMore));
+        setNextCursor(response.data.nextCursor || null);
       } catch (error) {
         console.log(error);
         if (error.response?.status === 401) {
           navigate("/", { replace: true });
-          return;
         }
+      } finally {
+        if (requestId === latestRequestRef.current) setIsLoading(false);
       }
-    };
-    getAllBooks();
-  }, []);
-
-  const filteredBooks = allBooks.filter((book) =>
-    book.bookName.toLowerCase().includes(search.toLowerCase()),
+    },
+    [navigate],
   );
 
-  //   {filteredBooks.map((book) => {
-  //   console.log(book.bookImage);
+  // Wait until the user stops typing (400ms) before searching.
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(search.trim()), 400);
+    return () => clearTimeout(timer);
+  }, [search]);
 
-  // console.log("bookImage value:", JSON.stringify(filteredBooks[0]?.bookImage));
+  // Load the first page on mount, and again whenever the search changes.
+  useEffect(() => {
+    fetchBooks({ searchText: debouncedSearch });
+  }, [debouncedSearch, fetchBooks]);
+
+  // Infinite scroll: when the marker near the bottom becomes visible,
+  // load the next batch (only if there is one and nothing is loading).
+  useEffect(() => {
+    const marker = loadMoreRef.current;
+    if (!marker) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !isLoading && nextCursor) {
+          fetchBooks({ cursor: nextCursor, searchText: debouncedSearch });
+        }
+      },
+      { rootMargin: "200px" }, // start loading a little before the very bottom
+    );
+
+    observer.observe(marker);
+
+    return () => observer.disconnect();
+  }, [hasMore, isLoading, nextCursor, debouncedSearch, fetchBooks]);
 
   return (
     <div>
@@ -82,62 +136,67 @@ const ViewBooks = () => {
         </div>
 
         {/* Books */}
-        {filteredBooks.length === 0 ? (
+        {allBooks.length === 0 ? (
           <div className="no-books">
-            <h3>No books found.</h3>
+            <h3>{isLoading ? "Loading books..." : "No books found."}</h3>
           </div>
         ) : (
-          <div className="view-books-books-grid">
-            {filteredBooks.map((book) => (
-              <div className="view-books-book-card" key={book.id}>
-                <div className="view-books-book-image">
-                  <img src={getImageUrl(book.bookImage)} alt={book.bookName} />
+          <>
+            <div className="view-books-books-grid">
+              {allBooks.map((book) => (
+                <div className="view-books-book-card" key={book.id}>
+                  <div className="view-books-book-image">
+                    <img
+                      src={getImageUrl(book.bookImage)}
+                      alt={book.bookName}
+                    />
+                  </div>
+
+                  <div className="view-books-book-details">
+                    <h2>{book.bookName}</h2>
+
+                    <p>
+                      <strong>Author:</strong> {book.bookAuthor}
+                    </p>
+
+                    <p>
+                      <strong>Category:</strong> {book.categoryName}
+                    </p>
+
+                    <p>
+                      <strong>Price:</strong> ₹{book.bookCost}
+                    </p>
+
+                    <p>
+                      <strong>Status:</strong>{" "}
+                      <span
+                        className={
+                          book.bookStatus === "Available"
+                            ? "status available"
+                            : "status unavailable"
+                        }
+                      >
+                        {book.bookStatus}
+                      </span>
+                    </p>
+
+                    <p className="view-books-description">
+                      {book.bookDescription}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
 
-                <div className="view-books-book-details">
-                  <h2>{book.bookName}</h2>
+            {/* Infinite scroll marker + loading message */}
+            {hasMore && <div ref={loadMoreRef} style={{ height: 1 }} />}
 
-                  <p>
-                    <strong>Author:</strong> {book.bookAuthor}
-                  </p>
-
-                  <p>
-                    <strong>Category:</strong> {book.categoryName}
-                  </p>
-
-                  <p>
-                    <strong>Price:</strong> ₹{book.bookCost}
-                  </p>
-
-                  {/* <p>
-                  <strong>Quantity:</strong> {book.quantity}
-                </p> */}
-
-                  <p>
-                    <strong>Status:</strong>{" "}
-                    <span
-                      className={
-                        book.bookStatus === "Available"
-                          ? "status available"
-                          : "status unavailable"
-                      }
-                    >
-                      {book.bookStatus}
-                    </span>
-                  </p>
-
-                  <p className="view-books-description">
-                    {book.bookDescription}
-                  </p>
-                </div>
-
-                {/* <div className="book-actions">
-                <button className="edit-btn">Edit</button>
-                <button className="delete-btn">Delete</button>
-              </div> */}
+            {isLoading && (
+              <div className="no-books">
+                <h3>Loading more books...</h3>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </div>
     </div>

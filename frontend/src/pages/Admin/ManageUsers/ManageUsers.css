@@ -257,3 +257,30 @@
     align-items: flex-start;
   }
 }
+
+.users-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.page-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2f5d3a;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-weight: 600;
+}

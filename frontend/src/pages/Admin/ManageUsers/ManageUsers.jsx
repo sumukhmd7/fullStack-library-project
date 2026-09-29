@@ -3,112 +3,78 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ManageUsers.css";
 
+const PAGE_SIZE = 20; // users per page (backend allows up to 50)
+
 const ManageUsers = () => {
   const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(""); // what the admin is typing
+  const [debouncedSearch, setDebouncedSearch] = useState(""); // what we send to the backend
 
-  const getAllUsers = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8000/admin/viewUsers",
-        {
-          withCredentials: true,
-        },
-      );
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
-      setUsers(response.data.usersData || []);
-    } catch (error) {
-      console.log(error);
-      if (error.response?.status === 401) {
-        navigate("/", { replace: true });
-        return;
-      }
-    }
-  };
-
+  // Wait until the admin stops typing (400ms) before searching,
+  // and always go back to page 1 for a new search.
   useEffect(() => {
-    getAllUsers();
-  }, []);
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search.trim());
+      setPage(1);
+    }, 400);
 
-  const handleLogout = async () => {
-    try {
-      await axios.post(
-        "http://localhost:8000/admin/logout",
-        {},
-        {
-          withCredentials: true,
-        },
-      );
+    return () => clearTimeout(timer);
+  }, [search]);
 
-      navigate("/", { replace: true });
-    } catch (error) {
-      console.log(error);
-    }
+  // Fetch one page of users whenever the page or the search changes.
+  useEffect(() => {
+    let ignore = false; // ignores the response if a newer request has started
+
+    const getUsers = async () => {
+      setIsLoading(true);
+      try {
+        const response = await axios.get(
+          "http://localhost:8000/admin/viewUsers",
+          {
+            params: { page, limit: PAGE_SIZE, search: debouncedSearch },
+            withCredentials: true,
+          },
+        );
+
+        if (ignore) return;
+
+        setUsers(response.data.usersData || []);
+        setTotalPages(response.data.totalPages || 1);
+        setTotalUsers(response.data.total || 0);
+      } catch (error) {
+        console.log(error);
+        if (error.response?.status === 401) {
+          navigate("/", { replace: true });
+        }
+      } finally {
+        if (!ignore) setIsLoading(false);
+      }
+    };
+
+    getUsers();
+
+    return () => {
+      ignore = true;
+    };
+  }, [page, debouncedSearch, navigate]);
+
+  const goToPage = (newPage) => {
+    setPage(newPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  const filteredUsers = users.filter(
-    (user) =>
-      user.userName.toLowerCase().includes(search.toLowerCase()) ||
-      user.userEmail.toLowerCase().includes(search.toLowerCase()),
-  );
 
   return (
     <div
       className="admin-page"
       style={{ display: "flex", width: "100vw", minHeight: "100vh" }}
     >
-      {/* ================= Sidebar ================= */}
-
-      {/* <aside className="admin-sidebar">
-        <div className="admin-logo">
-          <div className="logo-icon">📖</div>
-          <h2>Library Admin</h2>
-        </div>
-
-        <div className="admin-profile">
-          <div className="profile-avatar">A</div>
-
-          <div className="profile-details">
-            <h3>Admin</h3>
-          </div>
-        </div>
-
-        <p className="menu-title">MAIN MENU</p>
-
-        <nav className="admin-menu">
-          <div className="menu-item" onClick={() => navigate("/admin")}>
-            <span className="menu-icon">▦</span>
-            <span>Dashboard</span>
-          </div>
-
-          <div className="menu-item active">
-            <span className="menu-icon">👥</span>
-            <span>View Users</span>
-          </div>
-
-          <div className="menu-item" onClick={() => navigate("/manageBooks")}>
-            <span className="menu-icon">📖</span>
-            <span>Manage Books</span>
-          </div>
-
-          <div className="menu-item" onClick={() => navigate("/borrowedbooks")}>
-            <span className="menu-icon">📚</span>
-            <span>Borrowed Books</span>
-          </div>
-        </nav>
-
-        <div className="sidebar-bottom">
-          <div className="menu-item logout" onClick={handleLogout}>
-            <span className="menu-icon">↪</span>
-            <span>Logout</span>
-          </div>
-        </div>
-      </aside> */}
-
-      {/* ================= Main ================= */}
-
       <main
         className="admin-main-no-sidebar"
         style={{
@@ -148,7 +114,7 @@ const ManageUsers = () => {
             <div className="search-box">
               <input
                 type="text"
-                placeholder="Search user..."
+                placeholder="Search by name or email..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
@@ -161,7 +127,7 @@ const ManageUsers = () => {
             <div className="summary-icon">👥</div>
 
             <div>
-              <h2>{filteredUsers.length}</h2>
+              <h2>{totalUsers}</h2>
               <p>Registered Users</p>
             </div>
           </div>
@@ -169,13 +135,17 @@ const ManageUsers = () => {
           {/* Users Grid */}
 
           <div className="users-grid">
-            {filteredUsers.length === 0 ? (
+            {isLoading ? (
+              <div className="no-users">
+                <h2>Loading users...</h2>
+              </div>
+            ) : users.length === 0 ? (
               <div className="no-users">
                 <h2>No Users Found</h2>
               </div>
             ) : (
-              filteredUsers.map((user, index) => (
-                <div className="user-card" key={index}>
+              users.map((user) => (
+                <div className="user-card" key={user.id}>
                   <div className="user-card-top">
                     <div className="user-avatar">
                       {user.userProfilePic ? (
@@ -210,6 +180,32 @@ const ManageUsers = () => {
               ))
             )}
           </div>
+
+          {/* Pagination */}
+
+          {totalPages > 1 && (
+            <div className="users-pagination">
+              <button
+                className="page-btn"
+                disabled={page === 1 || isLoading}
+                onClick={() => goToPage(page - 1)}
+              >
+                ← Previous
+              </button>
+
+              <span className="page-info">
+                Page {page} of {totalPages}
+              </span>
+
+              <button
+                className="page-btn"
+                disabled={page === totalPages || isLoading}
+                onClick={() => goToPage(page + 1)}
+              >
+                Next →
+              </button>
+            </div>
+          )}
         </section>
       </main>
     </div>

@@ -21,7 +21,7 @@ const userValSchema = {
       userName: z
         .string()
         .min(3, "userName should be at least 3 characters")
-        .max(20, "userName should be at most 20 characters"),
+        .max(40, "userName should be at most 40 characters"),
 
       userPhone: z.coerce
         .number()

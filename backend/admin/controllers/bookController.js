@@ -12,6 +12,16 @@ const { eq, ilike, and, asc, desc, or, gt, count } = require("drizzle-orm");
 const bookLogger = require("../../utils/bookLogger/bookLogger");
 const userLogger = require("../../utils/userLogger/userLogger");
 
+// ----Function to invalidate the books cache in Redis,
+// used after adding, editing, or deleting a book----------
+const invalidateBooksCache = async () => {
+  try {
+    await redis.del("books:all");
+  } catch (redisErr) {
+    bookLogger.error(`Redis cache invalidation failed: ${redisErr.message}`);
+  }
+};
+
 const addBook = async (req, res) => {
   // console.log("✅ Entered addBook controller");
   // console.log(req.body);
@@ -44,7 +54,7 @@ const addBook = async (req, res) => {
       })
       .returning();
 
-    await redis.del("books:all");
+    await invalidateBooksCache();
 
     bookLogger.info("Book added successfully");
 
@@ -97,7 +107,7 @@ const editBook = async (req, res) => {
       });
     }
 
-    await redis.del("books:all");
+    await invalidateBooksCache();
 
     bookLogger.info("Book updated!");
 
@@ -132,7 +142,7 @@ const deleteBook = async (req, res) => {
       });
     }
 
-    await redis.del("books:all");
+    await invalidateBooksCache();
 
     bookLogger.info("Book deleted!");
 
@@ -347,6 +357,8 @@ const getallBooks = async (req, res) => {
     const search = (req.query.search || "").trim();
     const userId = req.user?.userId;
 
+    const dbStart = Date.now();
+
     console.log("📚 getallBooks request:", {
       hasCursor: Boolean(cursor),
       cursorPreview: cursor ? `${cursor.slice(0, 40)}...` : null,
@@ -400,6 +412,8 @@ const getallBooks = async (req, res) => {
         .orderBy(asc(books.createdAt), asc(books.id))
         .limit(limit + 1);
 
+      const fetchTimeMs = Date.now() - dbStart;
+
       const hasMore = paginatedBooks.length > limit;
       const pageItems = paginatedBooks.slice(0, limit);
       const nextCursor = hasMore
@@ -412,6 +426,7 @@ const getallBooks = async (req, res) => {
         hasMore,
         nextCursorPreview: nextCursor ? `${nextCursor.slice(0, 40)}...` : null,
         search,
+        fetchTimeMs,
       });
 
       const booksWithLikeStatus = pageItems.map((book) => ({
@@ -426,6 +441,7 @@ const getallBooks = async (req, res) => {
         limit,
         source: "db",
         books: booksWithLikeStatus,
+        fetchTimeMs,
       });
     }
 

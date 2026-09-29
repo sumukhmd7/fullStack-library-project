@@ -358,3 +358,14 @@ level info: Jul-23-2026 14:51:11 	Book details found!
 level info: Jul-23-2026 14:51:14 	Book updated!
 level info: Aug-04-2026 12:28:38 	User 73cad240-e353-4898-9fa9-3e47083dffc5 liked book a6f7f9d2-40de-4e58-b577-76292e4dda1d
 level info: Aug-04-2026 12:28:49 	User 73cad240-e353-4898-9fa9-3e47083dffc5 unliked book a6f7f9d2-40de-4e58-b577-76292e4dda1d
+level info: Sep-29-2026 15:18:38 	Book details found!
+level error: Sep-29-2026 15:18:43 	Error in editBook: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-29-2026 15:19:32 	Book details found!
+level error: Sep-29-2026 15:19:36 	Error in editBook: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-29-2026 15:32:47 	Book details found!
+level error: Sep-29-2026 15:32:51 	Redis cache invalidation failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-29-2026 15:32:51 	Book updated!
+level info: Sep-29-2026 15:32:55 	Book details found!
+level info: Sep-29-2026 15:33:01 	Book details found!
+level error: Sep-29-2026 15:33:04 	Redis cache invalidation failed: Stream isn't writeable and enableOfflineQueue options is false
+level info: Sep-29-2026 15:33:04 	Book updated!

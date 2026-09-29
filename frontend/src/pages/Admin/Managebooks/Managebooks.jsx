@@ -1,11 +1,15 @@
 import axios from "axios";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import "./Managebooks.css";
 import { useNavigate } from "react-router-dom";
 
 // Centralize the base URL so it's not hardcoded in 8 different places.
 // Move this to an env var (e.g. import.meta.env.VITE_API_BASE_URL) when you deploy.
 const API_BASE_URL = "http://localhost:8000";
+
+// Pagination settings (backend caps limit at 50)
+const PAGE_SIZE = 12;
+const SEARCH_DEBOUNCE_MS = 400;
 
 // const api = axios.create({
 //   baseURL: API_BASE_URL,
@@ -50,6 +54,17 @@ const ManageBooks = () => {
   const [isPageLoading, setIsPageLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Pagination state
+  const [hasMore, setHasMore] = useState(false);
+  const [nextCursor, setNextCursor] = useState(null);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  // Drops responses from outdated requests (fast typing, "Load More" during a new search)
+  const latestRequestRef = useRef(0);
+  // Remembers which search term page 1 was last fetched for
+  const lastFetchedSearchRef = useRef("");
+
   const navigate = useNavigate();
 
   // ==========================================
@@ -78,22 +93,49 @@ const ManageBooks = () => {
     setCategories(response.data.categories || []);
   }, []);
 
-  const getAllBooks = useCallback(async () => {
-    const response = await axios.get(`${API_BASE_URL}/books/getallBooks`, {
-      withCredentials: true,
-    });
-    setBooks(response.data.books || []);
-  }, []);
+  // Fetches one page of books.
+  // No cursor  -> fresh first page (replaces the list)
+  // With cursor -> next page (appended to the list)
+  const getAllBooks = useCallback(
+    async ({ cursor = null, search = "" } = {}) => {
+      const requestId = ++latestRequestRef.current;
 
-  // Reusable refresh — no longer duplicated, uses the same error handling
-  // as everything else so a 401 during a refresh redirects like it should.
+      const response = await axios.get(`${API_BASE_URL}/books/getallBooks`, {
+        params: {
+          limit: PAGE_SIZE,
+          ...(cursor && { cursor }),
+          ...(search && { search }),
+        },
+        withCredentials: true,
+      });
+
+      // A newer request has started since this one — ignore this stale response
+      if (requestId !== latestRequestRef.current) return;
+
+      const {
+        books: pageBooks = [],
+        hasMore: more = false,
+        nextCursor: next = null,
+      } = response.data;
+
+      setBooks((previousBooks) =>
+        cursor ? [...previousBooks, ...pageBooks] : pageBooks,
+      );
+      setHasMore(more);
+      setNextCursor(next);
+    },
+    [],
+  );
+
+  // Reloads page 1 for the current search — same error handling as everything
+  // else so a 401 during a refresh redirects like it should.
   const refreshBooks = useCallback(async () => {
     try {
-      await getAllBooks();
+      await getAllBooks({ search: debouncedSearch });
     } catch (error) {
       handleApiError(error, "Failed to refresh books.");
     }
-  }, [getAllBooks, handleApiError]);
+  }, [getAllBooks, handleApiError, debouncedSearch]);
 
   // ==========================================
   // LIFECYCLE EFFECTS
@@ -121,6 +163,23 @@ const ManageBooks = () => {
       isMounted = false;
     };
   }, [getAllBooks, getAllCategories, handleApiError]);
+
+  // Debounce typing so we don't hit the API on every keystroke
+  useEffect(() => {
+    const timer = setTimeout(
+      () => setDebouncedSearch(searchBook.trim()),
+      SEARCH_DEBOUNCE_MS,
+    );
+    return () => clearTimeout(timer);
+  }, [searchBook]);
+
+  // Refetch page 1 whenever the debounced search term actually changes.
+  // The initial load above already fetched page 1 for the empty search.
+  useEffect(() => {
+    if (debouncedSearch === lastFetchedSearchRef.current) return;
+    lastFetchedSearchRef.current = debouncedSearch;
+    refreshBooks();
+  }, [debouncedSearch, refreshBooks]);
 
   // ==========================================
   // COMPONENT UTILITIES & DATA MUTATIONS
@@ -159,8 +218,21 @@ const ManageBooks = () => {
   };
 
   // ==========================================
-  // HANDLERS (ADD, EDIT, UPDATE, DELETE)
+  // HANDLERS (ADD, EDIT, UPDATE, DELETE, LOAD MORE)
   // ==========================================
+
+  const handleLoadMore = async () => {
+    if (!hasMore || isLoadingMore) return;
+
+    setIsLoadingMore(true);
+    try {
+      await getAllBooks({ cursor: nextCursor, search: debouncedSearch });
+    } catch (error) {
+      handleApiError(error, "Failed to load more books.");
+    } finally {
+      setIsLoadingMore(false);
+    }
+  };
 
   const handleAddBook = async (event) => {
     event.preventDefault();
@@ -303,20 +375,19 @@ const ManageBooks = () => {
       );
       alert(response.data.message);
       setDelPopup(false);
-      await refreshBooks();
+      // Remove locally instead of refetching — keeps the pages already loaded
+      // and the scroll position. The keyset cursor stays valid after a delete.
+      setBooks((previousBooks) =>
+        previousBooks.filter((book) => book.id !== bookId),
+      );
     } catch (error) {
       handleApiError(error, "Failed to delete book.");
     }
   };
 
   // ==========================================
-  // SEARCH / FILTER LOGIC
+  // IMAGE URL HELPER
   // ==========================================
-
-  // Defensive: handles books with a missing/null name instead of crashing.
-  const filteredBooks = books.filter((book) =>
-    (book.bookName ?? "").toLowerCase().includes(searchBook.toLowerCase()),
-  );
 
   // Cache-busting so a re-uploaded image (same filename, new content)
   // actually shows the new image instead of a stale cached one.
@@ -395,7 +466,12 @@ const ManageBooks = () => {
           </div>
 
           <div className="books-count">
-            Total Books: <strong>{books.length}</strong>
+            Showing:{" "}
+            <strong>
+              {books.length}
+              {hasMore ? "+" : ""}
+            </strong>{" "}
+            books
           </div>
         </div>
 
@@ -415,8 +491,8 @@ const ManageBooks = () => {
             </thead>
 
             <tbody>
-              {filteredBooks.length > 0 ? (
-                filteredBooks.map((book) => (
+              {books.length > 0 ? (
+                books.map((book) => (
                   <tr key={book.id}>
                     <td>
                       <div className="book-info">
@@ -506,6 +582,19 @@ const ManageBooks = () => {
             </tbody>
           </table>
         </div>
+
+        {/* --- LOAD MORE --- */}
+        {hasMore && (
+          <div className="load-more-container">
+            <button
+              className="load-more-button"
+              onClick={handleLoadMore}
+              disabled={isLoadingMore}
+            >
+              {isLoadingMore ? "Loading..." : "Load More"}
+            </button>
+          </div>
+        )}
 
         {/* ----- DELETE POPUP MODAL ------ */}
         {delPopup && (

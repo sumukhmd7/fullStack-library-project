@@ -5,7 +5,7 @@ const { categories } = require("../../drizzle/schemas/categorySchema");
 const { borrowedBooks } = require("../../drizzle/schemas/borrowedBooksSchema");
 
 const { count } = require("drizzle-orm");
-const { eq, ilike } = require("drizzle-orm");
+const { eq, ilike, or, sql, asc, and } = require("drizzle-orm");
 const db = require("../../db");
 const { success } = require("zod");
 
@@ -37,20 +37,56 @@ const adminDashBoard = async (req, res) => {
 
 const viewUsers = async (req, res) => {
   try {
-    const usersData = await db
-      .select({
-        id: users.id,
-        userName: users.userName,
-        userPhone: users.userPhone,
-        userEmail: users.userEmail,
-        userProfilePic: users.userProfilePic,
-      })
-      .from(users);
+    const pageParam = Number.parseInt(req.query.page, 10);
+    const limitParam = Number.parseInt(req.query.limit, 10);
+
+    const page = Number.isFinite(pageParam) ? Math.max(pageParam, 1) : 1;
+    const limit = Math.min(
+      Math.max(Number.isFinite(limitParam) ? limitParam : 20, 1),
+      50,
+    );
+    const offset = (page - 1) * limit;
+    const search = (req.query.search || "").trim();
+
+    // Escape LIKE wildcards so "50%" or "_" is treated literally
+    const pattern = `%${search.replace(/[\\%_]/g, "\\$&")}%`;
+    const whereClause = search
+      ? or(ilike(users.userName, pattern), ilike(users.userEmail, pattern))
+      : undefined;
+
+    // Page rows and total count run in parallel
+    const [usersData, [{ total }]] = await Promise.all([
+      db
+        .select({
+          id: users.id,
+          userName: users.userName,
+          userPhone: users.userPhone,
+          userEmail: users.userEmail,
+          userProfilePic: users.userProfilePic,
+        })
+        .from(users)
+        .where(whereClause)
+        .orderBy(asc(users.userName), asc(users.id)) // id breaks ties between same names
+        .limit(limit)
+        .offset(offset),
+
+      db
+        .select({ total: sql`count(*)`.mapWith(Number) })
+        .from(users)
+        .where(whereClause),
+    ]);
+
+    const totalPages = Math.max(Math.ceil(total / limit), 1);
 
     return res.status(200).send({
       success: true,
       message: "All Users Data",
-      usersData: usersData,
+      page,
+      limit,
+      total,
+      totalPages,
+      hasMore: page < totalPages,
+      usersData,
     });
   } catch (error) {
     return res.status(500).send({
